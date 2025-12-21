@@ -19,3 +19,5 @@ C:\Users\daqla\OneDrive\Desktop\ChineseCalendarApp\ChineseCalendar\ChineseCalend
 C:\Users\daqla\OneDrive\Desktop\ChineseCalendarApp\ChineseCalendar\ChineseCalendar\obj\Debug\net8.0-windows\ChineseCalendar.pdb
 C:\Users\daqla\OneDrive\Desktop\ChineseCalendarApp\ChineseCalendar\ChineseCalendar\obj\Debug\net8.0-windows\ChineseCalendar.genruntimeconfig.cache
 C:\Users\daqla\OneDrive\Desktop\ChineseCalendarApp\ChineseCalendar\ChineseCalendar\obj\Debug\net8.0-windows\ref\ChineseCalendar.dll
+C:\Users\daqla\OneDrive\Desktop\ChineseCalendarApp\ChineseCalendar\ChineseCalendar\obj\Debug\net8.0-windows\Views\CalendarWindow.g.cs
+C:\Users\daqla\OneDrive\Desktop\ChineseCalendarApp\ChineseCalendar\ChineseCalendar\obj\Debug\net8.0-windows\Views\CalendarWindow.baml

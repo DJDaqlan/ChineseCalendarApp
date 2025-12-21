@@ -12,21 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ChineseCalendar
+namespace ChineseCalendar.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for CalendarWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class CalendarWindow : Window
     {
-        public MainWindow()
+        public CalendarWindow()
         {
             InitializeComponent();
-        }
-
-        private void CalendarButton_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
