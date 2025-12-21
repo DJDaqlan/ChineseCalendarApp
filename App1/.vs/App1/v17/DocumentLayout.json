@@ -1,0 +1,104 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\daqla\\source\\repos\\App1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0E15D48A-85DD-4166-9624-A9690A21E915}|App1\\App1.csproj|c:\\users\\daqla\\source\\repos\\app1\\app1\\windows\\homewindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0E15D48A-85DD-4166-9624-A9690A21E915}|App1\\App1.csproj|solutionrelative:app1\\windows\\homewindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0E15D48A-85DD-4166-9624-A9690A21E915}|App1\\App1.csproj|c:\\users\\daqla\\source\\repos\\app1\\app1\\windows\\calendarwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0E15D48A-85DD-4166-9624-A9690A21E915}|App1\\App1.csproj|solutionrelative:app1\\windows\\calendarwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0E15D48A-85DD-4166-9624-A9690A21E915}|App1\\App1.csproj|c:\\users\\daqla\\source\\repos\\app1\\app1\\interfaces\\windowoperable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0E15D48A-85DD-4166-9624-A9690A21E915}|App1\\App1.csproj|solutionrelative:app1\\interfaces\\windowoperable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0E15D48A-85DD-4166-9624-A9690A21E915}|App1\\App1.csproj|c:\\users\\daqla\\source\\repos\\app1\\app1\\windows\\homewindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{0E15D48A-85DD-4166-9624-A9690A21E915}|App1\\App1.csproj|solutionrelative:app1\\windows\\homewindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0E15D48A-85DD-4166-9624-A9690A21E915}|App1\\App1.csproj|c:\\users\\daqla\\source\\repos\\app1\\app1\\services\\datecalculationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0E15D48A-85DD-4166-9624-A9690A21E915}|App1\\App1.csproj|solutionrelative:app1\\services\\datecalculationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CalendarWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\daqla\\source\\repos\\App1\\App1\\Windows\\CalendarWindow.xaml.cs",
+              "RelativeDocumentMoniker": "App1\\Windows\\CalendarWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\daqla\\source\\repos\\App1\\App1\\Windows\\CalendarWindow.xaml.cs",
+              "RelativeToolTip": "App1\\Windows\\CalendarWindow.xaml.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-21T02:27:24.489Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "WindowOperable.cs",
+              "DocumentMoniker": "C:\\Users\\daqla\\source\\repos\\App1\\App1\\Interfaces\\WindowOperable.cs",
+              "RelativeDocumentMoniker": "App1\\Interfaces\\WindowOperable.cs",
+              "ToolTip": "C:\\Users\\daqla\\source\\repos\\App1\\App1\\Interfaces\\WindowOperable.cs",
+              "RelativeToolTip": "App1\\Interfaces\\WindowOperable.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-21T02:17:23.311Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "HomeWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\daqla\\source\\repos\\App1\\App1\\Windows\\HomeWindow.xaml",
+              "RelativeDocumentMoniker": "App1\\Windows\\HomeWindow.xaml",
+              "ToolTip": "C:\\Users\\daqla\\source\\repos\\App1\\App1\\Windows\\HomeWindow.xaml",
+              "RelativeToolTip": "App1\\Windows\\HomeWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-12-21T02:13:51.628Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DateCalculationService.cs",
+              "DocumentMoniker": "C:\\Users\\daqla\\source\\repos\\App1\\App1\\Services\\DateCalculationService.cs",
+              "RelativeDocumentMoniker": "App1\\Services\\DateCalculationService.cs",
+              "ToolTip": "C:\\Users\\daqla\\source\\repos\\App1\\App1\\Services\\DateCalculationService.cs",
+              "RelativeToolTip": "App1\\Services\\DateCalculationService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-19T05:12:45.747Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "HomeWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\daqla\\source\\repos\\App1\\App1\\Windows\\HomeWindow.xaml.cs",
+              "RelativeDocumentMoniker": "App1\\Windows\\HomeWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\daqla\\source\\repos\\App1\\App1\\Windows\\HomeWindow.xaml.cs",
+              "RelativeToolTip": "App1\\Windows\\HomeWindow.xaml.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAAABoAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-17T04:23:35.857Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
