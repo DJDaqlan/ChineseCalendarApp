@@ -17,7 +17,7 @@ namespace ChineseCalendar.Views
     /// <summary>
     /// Interaction logic for CalendarWindow.xaml
     /// </summary>
-    public partial class CalendarWindow : Window
+    public partial class CalendarWindow : Window, WindowOperable
     {
         public CalendarWindow()
         {
@@ -26,7 +26,17 @@ namespace ChineseCalendar.Views
 
         private void ChineseCalendarButton_Click(object sender, RoutedEventArgs e)
         {
+            OpenWindow(new ChineseCalendarWindow());
+            CloseWindow();
+        }
 
+        public void OpenWindow(Window newWindow)
+        {
+            newWindow.Show();
+        }
+        public void CloseWindow()
+        {
+            this.Close();
         }
     }
 }

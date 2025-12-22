@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChineseCalendar"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="800">
     <Grid>
         <Label x:Name="TitleLabel" Content="Chinese Calendar" HorizontalAlignment="Center" Margin="0,77,0,0" VerticalAlignment="Top"/>
         <Label x:Name="EventLabel" Content="Today's Event" HorizontalAlignment="Left" Margin="163,168,0,0" VerticalAlignment="Top"/>

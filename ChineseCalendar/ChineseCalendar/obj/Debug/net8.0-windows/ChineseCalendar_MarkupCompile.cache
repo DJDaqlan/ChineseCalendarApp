@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
 C:\Users\daqla\OneDrive\Desktop\ChineseCalendarApp\ChineseCalendar\ChineseCalendar\App.xaml
-2-2138026768
+3-786396197
 
-6-1375438227
+7679688456
 198-192518753
-MainWindow.xaml;Views\CalendarWindow.xaml;
+MainWindow.xaml;Views\CalendarWindow.xaml;Views\ChineseCalendarWindow.xaml;
 
 False
 
