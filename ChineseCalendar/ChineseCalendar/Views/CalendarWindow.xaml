@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="CalendarWindow" Height="450" Width="800">
     <Grid>
-        
+        <Button HorizontalAlignment="Left" Margin="378,292,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="ChineseCalendarButton" Content="View Chinese Calendar" Click="ChineseCalendarButton_Click" Margin="318,377,358,37"/>
+        <Image HorizontalAlignment="Left" Height="357" Margin="126,35,0,0" VerticalAlignment="Top" Width="508" Source="/Assets/Template.png"/>
+
     </Grid>
 </Window>

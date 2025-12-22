@@ -7,12 +7,16 @@
       "RelativeMoniker": "D:0:0:{E8523007-AA71-4EA7-9133-39AE02B2FE43}|ChineseCalendar\\ChineseCalendar.csproj|solutionrelative:chinesecalendar\\views\\calendarwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E8523007-AA71-4EA7-9133-39AE02B2FE43}|ChineseCalendar\\ChineseCalendar.csproj|c:\\users\\daqla\\onedrive\\desktop\\chinesecalendarapp\\chinesecalendar\\chinesecalendar\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E8523007-AA71-4EA7-9133-39AE02B2FE43}|ChineseCalendar\\ChineseCalendar.csproj|solutionrelative:chinesecalendar\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E8523007-AA71-4EA7-9133-39AE02B2FE43}|ChineseCalendar\\ChineseCalendar.csproj|c:\\users\\daqla\\onedrive\\desktop\\chinesecalendarapp\\chinesecalendar\\chinesecalendar\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{E8523007-AA71-4EA7-9133-39AE02B2FE43}|ChineseCalendar\\ChineseCalendar.csproj|solutionrelative:chinesecalendar\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8523007-AA71-4EA7-9133-39AE02B2FE43}|ChineseCalendar\\ChineseCalendar.csproj|c:\\users\\daqla\\onedrive\\desktop\\chinesecalendarapp\\chinesecalendar\\chinesecalendar\\views\\calendarwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8523007-AA71-4EA7-9133-39AE02B2FE43}|ChineseCalendar\\ChineseCalendar.csproj|solutionrelative:chinesecalendar\\views\\calendarwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8523007-AA71-4EA7-9133-39AE02B2FE43}|ChineseCalendar\\ChineseCalendar.csproj|c:\\users\\daqla\\onedrive\\desktop\\chinesecalendarapp\\chinesecalendar\\chinesecalendar\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{E8523007-AA71-4EA7-9133-39AE02B2FE43}|ChineseCalendar\\ChineseCalendar.csproj|solutionrelative:chinesecalendar\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,8 +26,20 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "App.xaml",
+              "DocumentMoniker": "C:\\Users\\daqla\\OneDrive\\Desktop\\ChineseCalendarApp\\ChineseCalendar\\ChineseCalendar\\App.xaml",
+              "RelativeDocumentMoniker": "ChineseCalendar\\App.xaml",
+              "ToolTip": "C:\\Users\\daqla\\OneDrive\\Desktop\\ChineseCalendarApp\\ChineseCalendar\\ChineseCalendar\\App.xaml",
+              "RelativeToolTip": "ChineseCalendar\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-12-22T05:13:02.6Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -38,26 +54,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\daqla\\OneDrive\\Desktop\\ChineseCalendarApp\\ChineseCalendar\\ChineseCalendar\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "ChineseCalendar\\MainWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\daqla\\OneDrive\\Desktop\\ChineseCalendarApp\\ChineseCalendar\\ChineseCalendar\\MainWindow.xaml.cs",
-              "RelativeToolTip": "ChineseCalendar\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAswBwAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "CalendarWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\daqla\\OneDrive\\Desktop\\ChineseCalendarApp\\ChineseCalendar\\ChineseCalendar\\Views\\CalendarWindow.xaml.cs",
+              "RelativeDocumentMoniker": "ChineseCalendar\\Views\\CalendarWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\daqla\\OneDrive\\Desktop\\ChineseCalendarApp\\ChineseCalendar\\ChineseCalendar\\Views\\CalendarWindow.xaml.cs",
+              "RelativeToolTip": "ChineseCalendar\\Views\\CalendarWindow.xaml.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAgwBwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-21T05:36:39.957Z"
+              "WhenOpened": "2025-12-21T06:08:45.389Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\daqla\\OneDrive\\Desktop\\ChineseCalendarApp\\ChineseCalendar\\ChineseCalendar\\MainWindow.xaml",
               "RelativeDocumentMoniker": "ChineseCalendar\\MainWindow.xaml",
               "ToolTip": "C:\\Users\\daqla\\OneDrive\\Desktop\\ChineseCalendarApp\\ChineseCalendar\\ChineseCalendar\\MainWindow.xaml",
               "RelativeToolTip": "ChineseCalendar\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-12-21T05:15:58.912Z"
+              "WhenOpened": "2025-12-21T05:15:58.912Z",
+              "EditorCaption": ""
             }
           ]
         }

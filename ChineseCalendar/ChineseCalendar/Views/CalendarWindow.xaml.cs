@@ -23,5 +23,10 @@ namespace ChineseCalendar.Views
         {
             InitializeComponent();
         }
+
+        private void ChineseCalendarButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
