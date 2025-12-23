@@ -5,7 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChineseCalendar.Views"
         mc:Ignorable="d"
-        Title="CalendarWindow" Height="516" Width="800">
+        Title="CalendarWindow" Height="554" Width="802">
     <Grid>
+        <Viewbox x:Name="CalendarViewBox" Stretch="Uniform" Margin="98,10,98,85">
+            <Grid Width="800" Height="600">
+                <Image Source="/Assets/Template.png" Stretch="Fill"/>
+                <Label x:Name="MonthLabel" Content="Month" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,32,0,0" FontWeight="Bold" Foreground="White" FontSize="36"/>
+                <Label x:Name="YearLabel" Content="Year" HorizontalAlignment="Left" Margin="44,18,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="White" FontSize="36"/>
+                <Button x:Name="PrevMonthButton" Content="Prev" Margin="294,51,467,529" FontWeight="Bold" Click="PrevMonthButton_Click"></Button>
+                <Button x:Name="NextMonthButton" Content="Next" Margin="462,51,299,529" FontWeight="Bold" Click="NextMonthButton_Click"></Button>
+                <Grid x:Name="WeekdaysGrid" Margin="10,116,10,415">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="SUN" HorizontalContentAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18" VerticalAlignment="Center"/>
+                    <Label Grid.Column="1" Content="MON" HorizontalContentAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18" VerticalAlignment="Center"/>
+                    <Label Grid.Column="2" Content="TUE" HorizontalContentAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18" VerticalAlignment="Center"/>
+                    <Label Grid.Column="3" Content="WED" HorizontalContentAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18" VerticalAlignment="Center"/>
+                    <Label Grid.Column="4" Content="THU" HorizontalContentAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18" VerticalAlignment="Center"/>
+                    <Label Grid.Column="5" Content="FRI" HorizontalContentAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18" VerticalAlignment="Center"/>
+                    <Label Grid.Column="6" Content="SAT" HorizontalContentAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid x:Name="DaysGrid" Margin="21,185,26,35">
+                    
+                </Grid>
+            </Grid>
+        </Viewbox>
     </Grid>
 </Window>
