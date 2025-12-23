@@ -14,6 +14,10 @@
                 <Label x:Name="YearLabel" Content="Year" HorizontalAlignment="Left" Margin="44,18,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="White" FontSize="36"/>
                 <Button x:Name="PrevMonthButton" Content="Prev" Margin="294,51,467,529" FontWeight="Bold" Click="PrevMonthButton_Click"></Button>
                 <Button x:Name="NextMonthButton" Content="Next" Margin="462,51,299,529" FontWeight="Bold" Click="NextMonthButton_Click"></Button>
+                <Button x:Name="CurrDateButton" Content="Reset" Margin="374,18,374,562" FontWeight="Bold" Click="CurrMonthButton_Click"></Button>
+                <ComboBox x:Name="MonthComboBox" Margin="527,50,165,531" IsEditable="False"/>
+                <ComboBox x:Name="YearComboBox" Margin="651,50,80,531" IsEditable="False"/>
+                <Button x:Name="SelectDateButton" Margin="733,45,31,530" Content="Go" FontWeight="Bold" FontSize="16" Click="SelectDateButton_Click"/>
                 <Grid x:Name="WeekdaysGrid" Margin="10,116,10,415">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -33,7 +37,6 @@
                     <Label Grid.Column="6" Content="SAT" HorizontalContentAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18" VerticalAlignment="Center"/>
                 </Grid>
                 <Grid x:Name="DaysGrid" Margin="21,185,26,35">
-                    
                 </Grid>
             </Grid>
         </Viewbox>

@@ -20,6 +20,7 @@ namespace ChineseCalendar.Views
     /// </summary>
     public partial class CalendarWindow : Window, WindowOperable
     {
+        const int YEAR_RANGE = 100;
         DateConverterService dateConverter = new DateConverterService();
         DateTime displayedDateTime;
         public CalendarWindow()
@@ -27,6 +28,7 @@ namespace ChineseCalendar.Views
             InitializeComponent();
             displayedDateTime = DateTime.Now;
             LoadDate(displayedDateTime);
+            LoadDateSelectors();
         }
         private void LoadDate(DateTime date)
         {
@@ -52,6 +54,14 @@ namespace ChineseCalendar.Views
 
         private void PopulateDays(int month, int year)
         {
+            bool isShowCurrMonth = false;
+            if (displayedDateTime.Year.Equals(DateTime.Now.Year))
+            {
+                if (displayedDateTime.Month.Equals(DateTime.Now.Month))
+                {
+                    isShowCurrMonth = true;
+                }
+            }
             int startingDay = (int)(new DateTime(year, month, 1).DayOfWeek);
             int monthDays = DateTime.DaysInMonth(year, month);
 
@@ -69,9 +79,20 @@ namespace ChineseCalendar.Views
                     VerticalAlignment=VerticalAlignment.Center,
                     FontSize=18
                 };
-                Grid.SetRow(dayLabel, row);
-                Grid.SetColumn(dayLabel, col);
-                DaysGrid.Children.Add(dayLabel);
+
+                var cell = new Border
+                {
+                    CornerRadius = new CornerRadius(6),
+                    Margin = new Thickness(2),
+                    Child = dayLabel
+                };
+                if (isShowCurrMonth && d.Equals(DateTime.Now.Day))
+                {
+                    cell.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#DBEAFE"));
+                }
+                Grid.SetRow(cell, row);
+                Grid.SetColumn(cell, col);
+                DaysGrid.Children.Add(cell);
 
                 col += 1;
                 if (col >= 7)
@@ -82,6 +103,15 @@ namespace ChineseCalendar.Views
             }
         }
 
+        private void LoadDateSelectors()
+        {
+            MonthComboBox.ItemsSource = Enumerable.Range(1, 12).Select(m => new DateTime(2025, m, 1).ToString("MMMM")).ToList();
+            int currentYear = DateTime.Now.Year;
+            YearComboBox.ItemsSource = Enumerable.Range(currentYear - (YEAR_RANGE / 2), YEAR_RANGE + 1).ToList();
+
+            MonthComboBox.SelectedIndex = displayedDateTime.Month - 1;
+            YearComboBox.SelectedItem = displayedDateTime.Year;
+        }
         public void OpenWindow(Window newWindow)
         {
             newWindow.Show();
@@ -122,6 +152,21 @@ namespace ChineseCalendar.Views
 
             DateTime newDate = new DateTime(newYear, newMonth, 1);
             displayedDateTime = newDate;
+            LoadDate(displayedDateTime);
+        }
+
+        private void CurrMonthButton_Click(object sender, RoutedEventArgs e)
+        {
+            displayedDateTime = DateTime.Now;
+            LoadDate(displayedDateTime);
+        }
+
+        private void SelectDateButton_Click(object sender, RoutedEventArgs e)
+        {
+            int desiredYear = (int)YearComboBox.SelectedItem;
+            int desiredMonth = MonthComboBox.SelectedIndex+1;
+
+            displayedDateTime = new DateTime(desiredYear, desiredMonth, 1);
             LoadDate(displayedDateTime);
         }
     }

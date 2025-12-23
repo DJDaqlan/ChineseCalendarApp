@@ -10,6 +10,7 @@ namespace ChineseCalendar.Services
     internal class DateConverterService
     {
         Dictionary<int, String> monthNameDict = new Dictionary<int, String>();
+
         public DateConverterService()
         {
             String[] monthArray = CultureInfo.CurrentCulture.DateTimeFormat.MonthNames;
