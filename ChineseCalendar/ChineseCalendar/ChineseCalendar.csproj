@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Assets\Template.png" />
+    <None Remove="Assets\LunarTemplate.png" />
     <None Remove="Views\Template.png" />
   </ItemGroup>
 
@@ -19,7 +19,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Assets\Template.png">
+    <Resource Include="Assets\GregTemplate.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\LunarTemplate.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

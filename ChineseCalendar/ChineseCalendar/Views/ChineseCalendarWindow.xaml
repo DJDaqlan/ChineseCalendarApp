@@ -5,8 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChineseCalendar.Views"
         mc:Ignorable="d"
-        Title="ChineseCalendarWindow" Height="450" Width="800">
+        Title="ChineseCalendarWindow" Height="554" Width="802">
     <Grid>
-        
+        <Viewbox x:Name="CalendarViewBox" Stretch="Uniform" Margin="88,17,108,78">
+            <Grid Width="800" Height="600">
+                <Image Source="/Assets/LunarTemplate.png" Stretch="Fill"/>
+                <Label x:Name="MonthLabel" Content="Month" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,32,0,0" FontWeight="Bold" Foreground="#FFE6C97A" FontSize="36"/>
+                <Label x:Name="YearLabel" Content="Year" HorizontalAlignment="Left" Margin="44,18,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#FFE6C97A" FontSize="36"/>
+                <Grid x:Name="WeekdaysGrid" Margin="10,116,10,415">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="星期日&#xD;&#xA;SUN" HorizontalContentAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18" VerticalAlignment="Center" Foreground="#FFE6C97A"/>
+                    <Label Grid.Column="1" Content="星期一&#xD;&#xA;MON" HorizontalContentAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18" VerticalAlignment="Center" Foreground="#FFE6C97A"/>
+                    <Label Grid.Column="2" Content="星期二&#xD;&#xA;TUE" HorizontalContentAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18" VerticalAlignment="Center" Foreground="#FFE6C97A"/>
+                    <Label Grid.Column="3" Content="星期三&#xD;&#xA;WED" HorizontalContentAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18" VerticalAlignment="Center" Foreground="#FFE6C97A"/>
+                    <Label Grid.Column="4" Content="星期四&#xD;&#xA;THU" HorizontalContentAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18" VerticalAlignment="Center" Foreground="#FFE6C97A"/>
+                    <Label Grid.Column="5" Content="星期五&#xD;&#xA;FRI" HorizontalContentAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18" VerticalAlignment="Center" Foreground="#FFE6C97A"/>
+                    <Label Grid.Column="6" Content="星期六&#xD;&#xA;SAT" HorizontalContentAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18" VerticalAlignment="Center" Foreground="#FFE6C97A"/>
+                </Grid>
+                <Grid x:Name="DaysGrid" Margin="21,185,26,35">
+                </Grid>
+            </Grid>
+        </Viewbox>
+        <Button x:Name="GregorianCalendarButton" Content="View Gregorian Calendar" HorizontalAlignment="Left" Margin="320,495,0,0" VerticalAlignment="Top" Width="142" FontWeight="Bold" Height="32" RenderTransformOrigin="0.5,0.5" Click="GregorianCalendarButton_Click"/>
+        <Button x:Name="HomeButton" Content="Home" HorizontalAlignment="Left" Margin="21,17,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="40" Width="40" Click="HomeButton_Click"/>
     </Grid>
 </Window>

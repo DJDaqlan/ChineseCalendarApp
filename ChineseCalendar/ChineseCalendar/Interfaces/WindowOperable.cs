@@ -9,7 +9,6 @@ namespace ChineseCalendar
 {
     interface WindowOperable
     {
-        void CloseWindow();
-        void OpenWindow(Window newWindow);
+        void LoadWindow(Window newWindow);
     }
 }

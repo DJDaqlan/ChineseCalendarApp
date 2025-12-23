@@ -30,6 +30,12 @@ namespace ChineseCalendar.Views
             LoadDate(displayedDateTime);
             LoadDateSelectors();
         }
+
+        public void LoadWindow(Window newWindow)
+        {
+            newWindow.Show();
+            this.Close();
+        }
         private void LoadDate(DateTime date)
         {
             MonthLabel.Content = dateConverter.MonthToString(date.Month);
@@ -112,14 +118,6 @@ namespace ChineseCalendar.Views
             MonthComboBox.SelectedIndex = displayedDateTime.Month - 1;
             YearComboBox.SelectedItem = displayedDateTime.Year;
         }
-        public void OpenWindow(Window newWindow)
-        {
-            newWindow.Show();
-        }
-        public void CloseWindow()
-        {
-            this.Close();
-        }
 
         private void PrevMonthButton_Click(object sender, RoutedEventArgs e)
         {
@@ -168,6 +166,16 @@ namespace ChineseCalendar.Views
 
             displayedDateTime = new DateTime(desiredYear, desiredMonth, 1);
             LoadDate(displayedDateTime);
+        }
+
+        private void ChineseCalendarButton_Click(object sender, RoutedEventArgs e)
+        {
+            LoadWindow(new ChineseCalendarWindow());
+        }
+
+        private void HomeButton_Click(object sender, RoutedEventArgs e)
+        {
+            LoadWindow(new MainWindow());
         }
     }
 }

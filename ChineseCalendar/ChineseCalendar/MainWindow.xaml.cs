@@ -28,17 +28,13 @@ namespace ChineseCalendar
 
         private void CalendarButton_Click(object sender, RoutedEventArgs e)
         {
-            this.OpenWindow(new CalendarWindow());
-            this.CloseWindow();
+            this.LoadWindow(new CalendarWindow());
         }
 
-        public void CloseWindow()
-        {
-            this.Close();
-        }
-        public void OpenWindow(Window newWindow)
+        public void LoadWindow(Window newWindow)
         {
             newWindow.Show();
+            this.Close();
         }
     }
 }
