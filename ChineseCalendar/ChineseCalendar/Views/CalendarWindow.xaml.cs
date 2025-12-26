@@ -77,7 +77,8 @@ namespace ChineseCalendar.Views
             DaysGrid.Children.Clear();
             for (int d = 1; d <= monthDays; d++)
             {
-                var dayLabel = new Label {
+                var dayLabel = new Label 
+                {
                     Content = d.ToString(), 
                     HorizontalContentAlignment=HorizontalAlignment.Center, 
                     VerticalContentAlignment=VerticalAlignment.Center, 

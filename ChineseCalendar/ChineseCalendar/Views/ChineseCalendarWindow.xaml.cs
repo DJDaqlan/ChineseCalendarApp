@@ -23,10 +23,12 @@ namespace ChineseCalendar.Views
     {
         DateTime displayedDate;
         DateConverterService dateConverter = new DateConverterService();
+        ChineseLunisolarCalendar calendar;
         public ChineseCalendarWindow()
         {
             InitializeComponent();
-            displayedDate = DateTime.Now;
+            calendar = new ChineseLunisolarCalendar();
+            displayedDate = DateTime.Today;
             LoadDate(displayedDate);
         }
 
@@ -38,9 +40,82 @@ namespace ChineseCalendar.Views
 
         public void LoadDate(DateTime displayedDate)
         {
-            ChineseLunisolarCalendar calendar = new ChineseLunisolarCalendar();
             int month = calendar.GetMonth(displayedDate);
-            MonthLabel.Content = dateConverter.MonthToString(month);
+            String engMonthName = dateConverter.MonthToString(month);
+            String chineseMonthName = dateConverter.MonthToChinese(engMonthName);
+            int leapMonth = calendar.GetLeapMonth(displayedDate.Year);
+            if (month == leapMonth)
+            {
+                month -= 1;
+                chineseMonthName = '闰' + chineseMonthName + " (Leap)";
+            }
+            else if (month > leapMonth)
+            {
+                month -= 1;
+            }
+
+            MonthLabel.Content = chineseMonthName;
+            int year = calendar.GetYear(displayedDate);
+            YearLabel.Content = year + "年";
+            InitialiseDays(year, month);
+            PopulateDays(year, month);
+        }
+
+        public void InitialiseDays(int year, int month)
+        {
+            int daysNum = calendar.GetDaysInMonth(year, month);
+            DaysGrid.RowDefinitions.Clear();
+            DaysGrid.ColumnDefinitions.Clear();
+            for (int i = 0; i < 7; i++)
+            {
+                DaysGrid.ColumnDefinitions.Add(new ColumnDefinition());
+            }
+            int rows = daysNum / 7 + Convert.ToInt32(daysNum % 7 != 0);
+            for (int i = 0; i < rows; i++)
+            {
+                DaysGrid.RowDefinitions.Add(new RowDefinition());
+            }
+        }
+        
+        public void PopulateDays(int year, int month)
+        {
+            int startingDay = (int)calendar.GetDayOfWeek(displayedDate);
+            int monthDays = calendar.GetDaysInMonth(year, month);
+
+            int row = 0;
+            int col = startingDay;
+
+            DaysGrid.Children.Clear();
+            for (int d = 1; d <= monthDays; d++)
+            {
+                var dayLabel = new Label
+                {
+                    Content = d.ToString(),
+                    HorizontalContentAlignment = HorizontalAlignment.Center,
+                    VerticalContentAlignment = VerticalAlignment.Center,
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Center,
+                    FontSize = 18
+                };
+
+                var cell = new Border
+                {
+                    CornerRadius = new CornerRadius(6),
+                    Margin = new Thickness(2),
+                    Child = dayLabel
+                };
+
+                Grid.SetRow(cell, row);
+                Grid.SetColumn(cell, col);
+                DaysGrid.Children.Add(cell);
+
+                col += 1;
+                if (col >= 7)
+                {
+                    col = 0;
+                    row += 1;
+                }
+            }
         }
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
