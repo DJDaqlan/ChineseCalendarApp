@@ -9,7 +9,7 @@
     <Grid>
         <Viewbox x:Name="CalendarViewBox" Stretch="Uniform" Margin="98,10,98,85">
             <Grid Width="800" Height="600">
-                <Image Source="/Assets/GregTemplate.png" Stretch="Fill"/>
+                <Image Source="/Assets/CalendarTemplates/GregTemplate.png" Stretch="Fill"/>
                 <Label x:Name="MonthLabel" Content="Month" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,32,0,0" FontWeight="Bold" Foreground="White" FontSize="36"/>
                 <Label x:Name="YearLabel" Content="Year" HorizontalAlignment="Left" Margin="44,18,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="White" FontSize="36"/>
                 <Button x:Name="PrevMonthButton" Content="Prev" Margin="294,51,467,529" FontWeight="Bold" Click="PrevMonthButton_Click"></Button>

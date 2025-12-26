@@ -9,7 +9,7 @@
     <Grid>
         <Viewbox x:Name="CalendarViewBox" Stretch="Uniform" Margin="88,17,108,78">
             <Grid Width="800" Height="600">
-                <Image Source="/Assets/LunarTemplate.png" Stretch="Fill"/>
+                <Image Source="/Assets/CalendarTemplates/LunarTemplate.png" Stretch="Fill"/>
                 <Label x:Name="MonthLabel" Content="Month&#xD;&#xA;Month" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,5,0,0" FontWeight="Bold" Foreground="#FFE6C97A" FontSize="36" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 <Label x:Name="YearLabel" Content="Year" HorizontalAlignment="Left" Margin="44,18,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#FFE6C97A" FontSize="36"/>
                 <Grid x:Name="WeekdaysGrid" Margin="10,116,10,415">
@@ -32,6 +32,9 @@
                 </Grid>
                 <Grid x:Name="DaysGrid" Margin="21,185,26,35">
                 </Grid>
+                <Border x:Name="ZodiacBorder" Margin="646,8,54,492" Width="100" Height="100">
+                    <Image x:Name="ZodiacImage"></Image>
+                </Border>
             </Grid>
         </Viewbox>
         <Button x:Name="GregorianCalendarButton" Content="View Gregorian Calendar" HorizontalAlignment="Left" Margin="320,478,0,0" VerticalAlignment="Top" Width="142" FontWeight="Bold" Height="32" RenderTransformOrigin="0.5,0.5" Click="GregorianCalendarButton_Click"/>

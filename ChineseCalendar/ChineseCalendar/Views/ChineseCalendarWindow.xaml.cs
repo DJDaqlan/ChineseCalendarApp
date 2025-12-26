@@ -76,7 +76,6 @@ namespace ChineseCalendar.Views
                 DaysGrid.RowDefinitions.Add(new RowDefinition());
             }
         }
-        
         public void PopulateDays(int year, int month)
         {
             int startingDay = (int)calendar.GetDayOfWeek(displayedDate);
