@@ -24,12 +24,15 @@ namespace ChineseCalendar.Views
         DateTime displayedDate;
         DateConverterService dateConverter = new DateConverterService();
         ChineseLunisolarCalendar calendar;
+        String[] zodiacArray = ["Rat", "Ox", "Tiger", "Rabbit", "Dragon", "Snake", "Horse", "Goat", "Monkey", "Rooster", "Dog", "Boar"];
         public ChineseCalendarWindow()
         {
             InitializeComponent();
             calendar = new ChineseLunisolarCalendar();
             displayedDate = DateTime.Today;
             LoadDate(displayedDate);
+            LoadZodiac();
+
         }
 
         public void LoadWindow(Window newWindow)
@@ -37,7 +40,6 @@ namespace ChineseCalendar.Views
             newWindow.Show();
             this.Close();
         }
-
         public void LoadDate(DateTime displayedDate)
         {
             int month = calendar.GetMonth(displayedDate);
@@ -115,6 +117,19 @@ namespace ChineseCalendar.Views
                     row += 1;
                 }
             }
+        }
+        public void LoadZodiac()
+        {
+            int year = calendar.GetYear(displayedDate);
+            int zodiacIndex = (year % 12) - 4;
+            if (zodiacIndex < 0)
+            {
+                zodiacIndex = 12 + zodiacIndex;
+            }
+            Uri path = new Uri("pack://application:,,,/Assets/ChineseZodiacs/" + zodiacArray[zodiacIndex] + ".png", UriKind.Absolute);
+            ImageSource image = new BitmapImage(path);
+
+            ZodiacImage.ImageSource = image;
         }
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {

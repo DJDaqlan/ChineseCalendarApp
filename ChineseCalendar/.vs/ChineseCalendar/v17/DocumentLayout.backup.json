@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\daqla\\OneDrive\\Desktop\\ChineseCalendarApp\\ChineseCalendar\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E8523007-AA71-4EA7-9133-39AE02B2FE43}|ChineseCalendar\\ChineseCalendar.csproj|c:\\users\\daqla\\onedrive\\desktop\\chinesecalendarapp\\chinesecalendar\\chinesecalendar\\views\\calendarwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{E8523007-AA71-4EA7-9133-39AE02B2FE43}|ChineseCalendar\\ChineseCalendar.csproj|solutionrelative:chinesecalendar\\views\\calendarwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{E8523007-AA71-4EA7-9133-39AE02B2FE43}|ChineseCalendar\\ChineseCalendar.csproj|c:\\users\\daqla\\onedrive\\desktop\\chinesecalendarapp\\chinesecalendar\\chinesecalendar\\views\\chinesecalendarwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{E8523007-AA71-4EA7-9133-39AE02B2FE43}|ChineseCalendar\\ChineseCalendar.csproj|solutionrelative:chinesecalendar\\views\\chinesecalendarwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E8523007-AA71-4EA7-9133-39AE02B2FE43}|ChineseCalendar\\ChineseCalendar.csproj|c:\\users\\daqla\\onedrive\\desktop\\chinesecalendarapp\\chinesecalendar\\chinesecalendar\\views\\chinesecalendarwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -21,14 +21,18 @@
           "SelectedChildIndex": 2,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "ChineseCalendarWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\daqla\\OneDrive\\Desktop\\ChineseCalendarApp\\ChineseCalendar\\ChineseCalendar\\Views\\ChineseCalendarWindow.xaml.cs",
               "RelativeDocumentMoniker": "ChineseCalendar\\Views\\ChineseCalendarWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\daqla\\OneDrive\\Desktop\\ChineseCalendarApp\\ChineseCalendar\\ChineseCalendar\\Views\\ChineseCalendarWindow.xaml.cs*",
-              "RelativeToolTip": "ChineseCalendar\\Views\\ChineseCalendarWindow.xaml.cs*",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAAE0AAAAJAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\daqla\\OneDrive\\Desktop\\ChineseCalendarApp\\ChineseCalendar\\ChineseCalendar\\Views\\ChineseCalendarWindow.xaml.cs",
+              "RelativeToolTip": "ChineseCalendar\\Views\\ChineseCalendarWindow.xaml.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAywIAAAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-23T04:04:31.31Z",
               "EditorCaption": ""
@@ -36,13 +40,13 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CalendarWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\daqla\\OneDrive\\Desktop\\ChineseCalendarApp\\ChineseCalendar\\ChineseCalendar\\Views\\CalendarWindow.xaml",
-              "RelativeDocumentMoniker": "ChineseCalendar\\Views\\CalendarWindow.xaml",
-              "ToolTip": "C:\\Users\\daqla\\OneDrive\\Desktop\\ChineseCalendarApp\\ChineseCalendar\\ChineseCalendar\\Views\\CalendarWindow.xaml",
-              "RelativeToolTip": "ChineseCalendar\\Views\\CalendarWindow.xaml",
+              "Title": "ChineseCalendarWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\daqla\\OneDrive\\Desktop\\ChineseCalendarApp\\ChineseCalendar\\ChineseCalendar\\Views\\ChineseCalendarWindow.xaml",
+              "RelativeDocumentMoniker": "ChineseCalendar\\Views\\ChineseCalendarWindow.xaml",
+              "ToolTip": "C:\\Users\\daqla\\OneDrive\\Desktop\\ChineseCalendarApp\\ChineseCalendar\\ChineseCalendar\\Views\\ChineseCalendarWindow.xaml",
+              "RelativeToolTip": "ChineseCalendar\\Views\\ChineseCalendarWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-12-26T05:31:47.218Z",
+              "WhenOpened": "2025-12-26T09:59:13.326Z",
               "EditorCaption": ""
             }
           ]

@@ -9,6 +9,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\CalendarTemplates\GregTemplate.png" />
+    <None Remove="Assets\CalendarTemplates\LunarTemplate.png" />
+    <None Remove="Assets\ChineseZodiacs\Boar.png" />
+    <None Remove="Assets\ChineseZodiacs\Dog.png" />
+    <None Remove="Assets\ChineseZodiacs\Dragon.png" />
+    <None Remove="Assets\ChineseZodiacs\Goat.png" />
+    <None Remove="Assets\ChineseZodiacs\Horse.png" />
+    <None Remove="Assets\ChineseZodiacs\Monkey.png" />
+    <None Remove="Assets\ChineseZodiacs\Ox.png" />
+    <None Remove="Assets\ChineseZodiacs\Rabbit.png" />
+    <None Remove="Assets\ChineseZodiacs\Rat.png" />
+    <None Remove="Assets\ChineseZodiacs\Rooster.png" />
+    <None Remove="Assets\ChineseZodiacs\Snake.png" />
+    <None Remove="Assets\ChineseZodiacs\Tiger.png" />
     <None Remove="Assets\LunarTemplate.png" />
     <None Remove="Views\Template.png" />
   </ItemGroup>
@@ -19,10 +33,46 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Assets\GregTemplate.png">
+    <Resource Include="Assets\CalendarTemplates\GregTemplate.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\LunarTemplate.png">
+    <Resource Include="Assets\CalendarTemplates\LunarTemplate.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\ChineseZodiacs\Boar.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\ChineseZodiacs\Dog.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\ChineseZodiacs\Dragon.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\ChineseZodiacs\Goat.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\ChineseZodiacs\Horse.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\ChineseZodiacs\Monkey.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\ChineseZodiacs\Ox.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\ChineseZodiacs\Rabbit.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\ChineseZodiacs\Rat.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\ChineseZodiacs\Rooster.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\ChineseZodiacs\Snake.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\ChineseZodiacs\Tiger.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

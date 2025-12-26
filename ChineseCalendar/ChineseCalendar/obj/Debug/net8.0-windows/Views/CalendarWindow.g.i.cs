@@ -157,7 +157,7 @@ namespace ChineseCalendar.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/ChineseCalendar;V1.0.0.0;component/views/calendarwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/ChineseCalendar;component/views/calendarwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\CalendarWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
