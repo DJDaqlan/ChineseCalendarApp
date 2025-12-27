@@ -1,4 +1,5 @@
 ﻿using ChineseCalendar.Services;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,43 +22,68 @@ namespace ChineseCalendar.Views
     public partial class CalendarWindow : Window, WindowOperable
     {
         const int YEAR_RANGE = 100;
-        DateConverterService dateConverter = new DateConverterService();
         DateTime displayedDateTime;
+        CalendarService calendar;
         public CalendarWindow()
         {
             InitializeComponent();
+            calendar = new CalendarService(CalendarService.calendarType.Gregorian);
             displayedDateTime = DateTime.Now;
             LoadDate(displayedDateTime);
             LoadDateSelectors();
         }
 
+        /// <summary>
+        /// Loads the specific window of choice and closes this one.
+        /// </summary>
+        /// <param name="newWindow">The new window to open.</param>
         public void LoadWindow(Window newWindow)
         {
             newWindow.Show();
             this.Close();
         }
+
+        /// <summary>
+        /// Loads the window with informaiton about the selected date
+        /// </summary>
+        /// <param name="date"></param>
         private void LoadDate(DateTime date)
         {
-            MonthLabel.Content = dateConverter.MonthToString(date.Month);
-            YearLabel.Content = date.Year;
-            InitialiseDays();
-            PopulateDays(date.Month, date.Year);
+            (int, int, int) dateNums = calendar.GetDateNum(date);
+            (String, String, String) dateStrs = calendar.GetDateStr(date);
+            MonthLabel.Content = dateStrs.Item2;
+            YearLabel.Content = dateStrs.Item1;
+            InitialiseDays(dateNums.Item1, dateNums.Item2);
+            PopulateDays(dateNums.Item2, dateNums.Item1);
         }
 
-        private void InitialiseDays()
+        /// <summary>
+        /// Initialises the window to present the date. Mainly divides the grid into cells for each individual day.
+        /// </summary>
+        /// <param name="year">The year to present.</param>
+        /// <param name="month">The month to present.</param>
+        private void InitialiseDays(int year, int month)
         {
+            int daysNum = calendar.GetNumDays(year, month);
+
             DaysGrid.RowDefinitions.Clear();
             DaysGrid.ColumnDefinitions.Clear();
             for (int i = 0; i < 7; i++)
             {
                 DaysGrid.ColumnDefinitions.Add(new ColumnDefinition());
             }
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < daysNum / 7 + (daysNum % 7 != 0 ? 1 : 0); i++)
             {
                 DaysGrid.RowDefinitions.Add(new RowDefinition());
             }
         }
 
+        /// <summary>
+        /// Fills the calendar grid with the days of the month, allocated into the specific day of the week.
+        /// Days of the week follow the Gregorian calendar.
+        /// </summary>
+        /// <param name="year">The year presented</param>
+        /// <param name="month">The month presented</param>
         private void PopulateDays(int month, int year)
         {
             bool isShowCurrMonth = false;
@@ -68,8 +94,8 @@ namespace ChineseCalendar.Views
                     isShowCurrMonth = true;
                 }
             }
-            int startingDay = (int)(new DateTime(year, month, 1).DayOfWeek);
-            int monthDays = DateTime.DaysInMonth(year, month);
+            int startingDay = (int)calendar.GetFirstDayOfMonth(year, month);
+            int monthDays = calendar.GetNumDays(year, month);
 
             int row = 0;
             int col = startingDay;
@@ -110,13 +136,33 @@ namespace ChineseCalendar.Views
             }
         }
 
+        /// <summary>
+        /// Initialises the year and month to today's date
+        /// </summary>
         private void LoadDateSelectors()
         {
-            MonthComboBox.ItemsSource = Enumerable.Range(1, 12).Select(m => new DateTime(2025, m, 1).ToString("MMMM")).ToList();
             int currentYear = DateTime.Now.Year;
-            YearComboBox.ItemsSource = Enumerable.Range(currentYear - (YEAR_RANGE / 2), YEAR_RANGE + 1).ToList();
+            UpdateMonthSelections(currentYear);
+            UpdateYearSelections(currentYear);
+        }
 
+        /// <summary>
+        /// Updates the month range to be selected based on the current year that is selected.
+        /// </summary>
+        /// <param name="year">The year to change the month range to.</param>
+        private void UpdateMonthSelections(int year)
+        {
+            MonthComboBox.ItemsSource = Enumerable.Range(1, 12).Select(m => new DateTime(year, m, 1).ToString("MMMM")).ToList();
             MonthComboBox.SelectedIndex = displayedDateTime.Month - 1;
+        }
+
+        /// <summary>
+        /// Updates the range of years to change to, with this year as the center.
+        /// </summary>
+        /// <param name="year"></param>
+        private void UpdateYearSelections(int year)
+        {
+            YearComboBox.ItemsSource = Enumerable.Range(year - (YEAR_RANGE / 2), YEAR_RANGE + 1).ToList();
             YearComboBox.SelectedItem = displayedDateTime.Year;
         }
 

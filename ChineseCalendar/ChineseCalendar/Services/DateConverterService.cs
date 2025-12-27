@@ -14,29 +14,44 @@ namespace ChineseCalendar.Services
 
         public DateConverterService()
         {
+            // Initialises the dictionary matching number to month name
             String[] monthArray = CultureInfo.CurrentCulture.DateTimeFormat.MonthNames;
             for (int i = 0; i < monthArray.Length; i++) {
                 monthNameDict[i] = monthArray[i].ToString();
             }
-            
         }
 
+        /// <summary>
+        /// Uses the month index to return the shortened month name.
+        /// </summary>
+        /// <param name="monthNum">The month number.</param>
+        /// <returns></returns>
         public String MonthToString(int monthNum)
         {
             return monthNameDict[monthNum-1].Substring(0, 3);
         }
 
+        /// <summary>
+        /// Uses the shortened month name to return the month order index.
+        /// </summary>
+        /// <param name="monthName">The month name, represented in its 3-character code.</param>
+        /// <returns></returns>
         public int MonthToInt(String monthName)
         {
             foreach (int monthInt in monthNameDict.Keys)
             {
                 if (monthName.Equals(monthNameDict[monthInt].Substring(0, 3))) {
-                    return monthInt+1;
+                    return monthInt;
                 }
             }
             return 0;
         }
 
+        /// <summary>
+        /// Converts the 3-char english word for the months into the chinese characters.
+        /// </summary>
+        /// <param name="english">The month name, represented as its 3-char code.</param>
+        /// <returns></returns>
         public String MonthToChinese(String english)
         {
             String translatedName = "";
@@ -94,7 +109,7 @@ namespace ChineseCalendar.Services
                         return "Error!";
                 }
             }
-            translatedName += "月\n" + english;
+            translatedName += "月";
             return translatedName;
         }
     }
