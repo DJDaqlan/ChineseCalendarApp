@@ -17,18 +17,42 @@ namespace ChineseCalendar.Services
             LunarChinese
         }
 
-        DateTime date;
         ChineseLunisolarCalendar chineseCalendar;
         DateConverterService dateConverter;
         calendarType version;
+
+        int displayedYear;
+        int displayedMonth;
         public CalendarService(calendarType version = calendarType.Gregorian)
         {
             chineseCalendar = new ChineseLunisolarCalendar();
             dateConverter = new DateConverterService();
             this.version = version;
+            displayedYear = DateTime.Today.Year;
+            displayedMonth = DateTime.Today.Month;
         }
 
-        public int GetYear(DateTime date) { return date.Year; }
+        public int GetYear() 
+        { 
+            return this.displayedYear; 
+        }
+        public void SetYear(int year) 
+        { 
+            this.displayedYear = year; 
+        }
+        public int GetMonth() 
+        { 
+            return this.displayedMonth; 
+        }
+        public void SetMonth(int month) 
+        {
+            this.displayedMonth = month;
+        }
+
+        public int GetMonth(String chinese)
+        {
+            return dateConverter.ChineseToInt(chinese.Substring(0, chinese.Length - 1));
+        }
 
         /// <summary>
         /// Gets the numbers of the year, month and day by the specified calendar type defined in constructor.
@@ -46,10 +70,12 @@ namespace ChineseCalendar.Services
                 year = chineseCalendar.GetYear(date);
                 day = chineseCalendar.GetDayOfMonth(date);
                 int leapMonth = chineseCalendar.GetLeapMonth(year);
+                
                 if (month >= leapMonth)
                 {
                     month -= 1;
                 }
+                
             }
             else if (version.Equals(calendarType.Gregorian))
             {
@@ -71,29 +97,107 @@ namespace ChineseCalendar.Services
             String year = "";
             String day = "";
 
-            (int, int, int) dateNums = this.GetDateNum(date);
-            int yearInt = dateNums.Item1;
-            int monthInt = dateNums.Item2;
-            int dayInt = dateNums.Item3;
+            if (version.Equals(calendarType.Gregorian))
+            {
+                int monthInt = date.Month;
+                int yearInt = date.Year;
+                String monthEng = dateConverter.MonthToString(monthInt);
+                month = monthEng;
+                year = yearInt.ToString();
+            }
 
-            String monthEng = dateConverter.MonthToString(monthInt);
-            month = monthEng;
-            year = yearInt.ToString();
+            if (version.Equals(calendarType.LunarChinese))
+            {
+                int monthInt = chineseCalendar.GetMonth(date);
+                int yearInt = chineseCalendar.GetYear(date);
+                int leapMonth = chineseCalendar.GetLeapMonth(yearInt);
+
+                if (monthInt < leapMonth)
+                {
+                    String monthEng = dateConverter.MonthToString(monthInt+1);
+                    String monthChinese = dateConverter.MonthToChinese(monthInt+1);
+                    month = monthChinese + "\n" + monthEng;
+                }
+                else if (monthInt == leapMonth)
+                {
+                    String monthEng = dateConverter.MonthToString(monthInt);
+                    String monthChinese = dateConverter.MonthToChinese(monthInt);
+                    month = '闰' + monthChinese + "\n" + monthEng;
+                }
+                else // monthInt > leapMonth
+                {
+                    String monthEng = "";
+                    String monthChinese = "";
+                    if (chineseCalendar.IsLeapYear(yearInt))
+                    {
+                        monthEng = dateConverter.MonthToString(monthInt - 12);
+                        monthChinese = dateConverter.MonthToChinese(monthInt-1);
+                        
+                    }
+                    else
+                    {
+                        monthEng = dateConverter.MonthToString(monthInt);
+                        monthChinese = dateConverter.MonthToChinese(monthInt);
+                    }
+                    month = monthChinese;
+                }
+
+                year = yearInt.ToString() + "年";
+                
+            }
+            return (year, month, day);
+        }
+
+        public (String, String) GetDateStr(int yearInt, int monthInt)
+        {
+            String month = "";
+            String year = "";
+
+            if (version.Equals(calendarType.Gregorian))
+            {
+                String monthEng = dateConverter.MonthToString(monthInt);
+                month = monthEng;
+                year = yearInt.ToString();
+            }
 
             if (version.Equals(calendarType.LunarChinese))
             {
                 int leapMonth = chineseCalendar.GetLeapMonth(yearInt);
-                String monthChinese = dateConverter.MonthToChinese(monthEng);
-                month = monthChinese + "\n" + monthEng;
 
-                if (monthInt == leapMonth)
+                if (monthInt < leapMonth)
                 {
-                    month = '闰' + month + " (Leap)";
+                    String monthEng = dateConverter.MonthToString(monthInt + 1);
+                    String monthChinese = dateConverter.MonthToChinese(monthInt);
+                    month = monthChinese + "\n" + monthEng;
+                }
+                else if (monthInt == leapMonth)
+                {
+                    String monthEng = dateConverter.MonthToString(monthInt);
+                    String monthChinese = dateConverter.MonthToChinese(monthInt-1);
+                    month = '闰' + monthChinese + "\n" + monthEng;
+                }
+                else // monthInt > leapMonth
+                {
+                    String monthEng = "";
+                    String monthChinese = "";
+                    if (chineseCalendar.IsLeapYear(yearInt))
+                    {
+                        monthEng = dateConverter.MonthToString(monthInt - 12);
+                        monthChinese = dateConverter.MonthToChinese(monthInt - 1);
+
+                    }
+                    else
+                    {
+                        monthEng = dateConverter.MonthToString(monthInt);
+                        monthChinese = dateConverter.MonthToChinese(monthInt);
+                    }
+                    month = monthChinese;
                 }
 
-                year = year + "年";
+                year = yearInt.ToString() + "年";
+
             }
-            return (year, month, day);
+            return (year, month);
         }
         
         /// <summary>
@@ -161,22 +265,23 @@ namespace ChineseCalendar.Services
             {
                 monthRange = new string[chineseCalendar.IsLeapYear(year) ? 13 : 12];
                 bool passedLeapMonth = false;
-                for (int m = 0; m < monthRange.Length; m++)
+                for (int m = 1; m < monthRange.Length; m++)
                 {
-                    if (chineseCalendar.IsLeapMonth(year, m + 1))
+                    if (chineseCalendar.IsLeapMonth(year, m))
                     {
-                        monthRange[m] = months[m - 1] + " (Leap Month)";
+                        monthRange[m-1] = "闰" + dateConverter.MonthToChinese(m-1);
                         passedLeapMonth = true;
                     }
                     else if (passedLeapMonth)
                     {
-                        monthRange[m] = months[m - 1];
+                        monthRange[m-1] = dateConverter.MonthToChinese(m-1);
                     }
                     else
                     {
-                        monthRange[m] = months[m];
+                        monthRange[m-1] = dateConverter.MonthToChinese(m);
                     }
                 }
+                monthRange[monthRange.Length-1] = dateConverter.MonthToChinese(12);
             }
 
             return monthRange;
@@ -193,6 +298,22 @@ namespace ChineseCalendar.Services
         {
             int[] yearRange = Enumerable.Range(year - (range / 2), range + 1).ToArray();
             return yearRange;
+        }
+
+        /// <summary>
+        /// Changes the date values to a desired year and month
+        /// </summary>
+        /// <param name="year">Year to change it to.</param>
+        /// <param name="month">Month to change it to</param>
+        /// <returns>The DateTime represented by that specific year and month.</returns>
+        public DateTime ChangeDate(int year, int month)
+        {
+            DateTime newDate = DateTime.Now;
+            if (version.Equals(calendarType.Gregorian))
+            {
+                newDate = new DateTime(year, month, 1);
+            }
+            return newDate;
         }
     }
 }

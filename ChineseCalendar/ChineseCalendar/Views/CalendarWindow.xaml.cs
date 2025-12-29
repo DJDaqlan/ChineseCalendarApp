@@ -72,7 +72,11 @@ namespace ChineseCalendar.Views
             {
                 DaysGrid.ColumnDefinitions.Add(new ColumnDefinition());
             }
-            for (int i = 0; i < daysNum / 7 + (daysNum % 7 != 0 ? 1 : 0); i++)
+            int increment = 0;
+            if (calendar.GetFirstDayOfMonth(year, month).Equals(DayOfWeek.Saturday)) increment += 1;
+            if (daysNum % 7 != 0) increment += 1;
+            int rows = daysNum / 7 + increment;
+            for (int i = 0; i < rows; i++)
             {
                 DaysGrid.RowDefinitions.Add(new RowDefinition());
             }
@@ -87,12 +91,17 @@ namespace ChineseCalendar.Views
         private void PopulateDays(int month, int year)
         {
             bool isShowCurrMonth = false;
+            bool isLeapMonth = false;
             if (displayedDateTime.Year.Equals(DateTime.Now.Year))
             {
                 if (displayedDateTime.Month.Equals(DateTime.Now.Month))
                 {
                     isShowCurrMonth = true;
                 }
+            }
+            if (displayedDateTime.Month == 2 && DateTime.IsLeapYear(year))
+            {
+                isLeapMonth = true;
             }
             int startingDay = (int)calendar.GetFirstDayOfMonth(year, month);
             int monthDays = calendar.GetNumDays(year, month);
@@ -103,9 +112,14 @@ namespace ChineseCalendar.Views
             DaysGrid.Children.Clear();
             for (int d = 1; d <= monthDays; d++)
             {
+                int day = d;
+                if (isLeapMonth && d > 29)
+                {
+                    day = 29;
+                }
                 var dayLabel = new Label 
                 {
-                    Content = d.ToString(), 
+                    Content = day.ToString(), 
                     HorizontalContentAlignment=HorizontalAlignment.Center, 
                     VerticalContentAlignment=VerticalAlignment.Center, 
                     HorizontalAlignment=HorizontalAlignment.Center, 
@@ -153,7 +167,7 @@ namespace ChineseCalendar.Views
         private void UpdateMonthSelections(int year)
         {
             MonthComboBox.ItemsSource = Enumerable.Range(1, 12).Select(m => new DateTime(year, m, 1).ToString("MMMM")).ToList();
-            MonthComboBox.SelectedIndex = displayedDateTime.Month - 1;
+            MonthComboBox.SelectedIndex = displayedDateTime.Month;
         }
 
         /// <summary>
@@ -178,8 +192,7 @@ namespace ChineseCalendar.Views
                 newMonth = 12;
             }
 
-            DateTime newDate = new DateTime(newYear, newMonth, 1);
-            displayedDateTime = newDate;
+            displayedDateTime = calendar.ChangeDate(newYear, newMonth);
             LoadDate(displayedDateTime);
         }
 
@@ -195,8 +208,7 @@ namespace ChineseCalendar.Views
                 newMonth = 1;
             }
 
-            DateTime newDate = new DateTime(newYear, newMonth, 1);
-            displayedDateTime = newDate;
+            displayedDateTime = calendar.ChangeDate(newYear, newMonth);
             LoadDate(displayedDateTime);
         }
 
@@ -211,7 +223,7 @@ namespace ChineseCalendar.Views
             int desiredYear = (int)YearComboBox.SelectedItem;
             int desiredMonth = MonthComboBox.SelectedIndex+1;
 
-            displayedDateTime = new DateTime(desiredYear, desiredMonth, 1);
+            displayedDateTime = calendar.ChangeDate(desiredYear, desiredMonth);
             LoadDate(displayedDateTime);
         }
 

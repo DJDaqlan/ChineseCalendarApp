@@ -36,7 +36,9 @@ namespace ChineseCalendar.Views
             InitializeComponent();
             displayedDate = DateTime.Now;
             calendar = new CalendarService(CalendarService.calendarType.LunarChinese);
-            LoadDate(displayedDate);
+            calendar.SetYear(displayedDate.Year);
+            calendar.SetMonth(displayedDate.Month);
+            LoadDate(calendar.GetYear(), calendar.GetMonth());
             LoadDateSelectors();
             LoadZodiac();
 
@@ -54,15 +56,12 @@ namespace ChineseCalendar.Views
         /// <summary>
         /// Loads the window with information about the selected date
         /// </summary>
-        /// <param name="displayedDate"></param>
-        private void LoadDate(DateTime displayedDate)
+        /// <param name="year">The year</param>
+        /// <param name="month">The month</param>
+        private void LoadDate(int year, int month)
         {
-            (int, int, int) dateNums = calendar.GetDateNum(displayedDate);
-            int year = dateNums.Item1;
-            int month = dateNums.Item2;
+            (String, String) dateStrs = calendar.GetDateStr(year, month);
 
-            (String, String, String) dateStrs = calendar.GetDateStr(displayedDate);
-            
             InitialiseDays(year, month);
             PopulateDays(year, month);
 
@@ -84,7 +83,10 @@ namespace ChineseCalendar.Views
             {
                 DaysGrid.ColumnDefinitions.Add(new ColumnDefinition());
             }
-            int rows = daysNum / 7 + Convert.ToInt32(daysNum % 7 != 0);
+            int increment = 0;
+            if (calendar.GetFirstDayOfMonth(year, month).Equals(DayOfWeek.Saturday)) increment += 1;
+            if (daysNum % 7 != 0) increment += 1;
+            int rows = daysNum / 7 + increment;
             for (int i = 0; i < rows; i++)
             {
                 DaysGrid.RowDefinitions.Add(new RowDefinition());
@@ -125,6 +127,11 @@ namespace ChineseCalendar.Views
                     Child = dayLabel
                 };
 
+                if (month == 1 && d == 1)
+                {
+                    cell.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#C62828"));
+                }
+
                 Grid.SetRow(cell, row);
                 Grid.SetColumn(cell, col);
                 DaysGrid.Children.Add(cell);
@@ -142,12 +149,14 @@ namespace ChineseCalendar.Views
         /// Updates the month range to be selected based on the current year that is selected.
         /// </summary>
         /// <param name="year">The year to change the month range to.</param>
-        private void UpdateMonthSelection(int year)
+        private void UpdateMonthSelection(int year, int month)
         {
             String[] monthRange = calendar.GetMonthRange(year);
 
             MonthComboBox.ItemsSource = monthRange;
-            // TODO: CHange selected item to the displayed chinese calendar date
+            calendar.SetMonth(month);
+            // CAUTION: Has high coupling with MonthLabel. Suggested to find another method.
+            MonthComboBox.SelectedIndex = calendar.GetMonth(MonthLabel.Content.ToString()) + 1;
         }
         
         /// <summary>
@@ -165,7 +174,7 @@ namespace ChineseCalendar.Views
         /// </summary>
         private void LoadDateSelectors()
         {
-            UpdateMonthSelection(displayedDate.Year);
+            UpdateMonthSelection(displayedDate.Year, displayedDate.Month);
             int currentYear = DateTime.Today.Year;
             UpdateYearSelection(currentYear);
             YearComboBox.SelectedItem = displayedDate.Year;
@@ -177,7 +186,7 @@ namespace ChineseCalendar.Views
         /// </summary>
         private void LoadZodiac()
         {
-            int year = calendar.GetYear(displayedDate);
+            int year = calendar.GetYear();
             int zodiacIndex = (year % 12) - 4;
             if (zodiacIndex < 0)
             {
@@ -190,7 +199,7 @@ namespace ChineseCalendar.Views
         }
         public void YearComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            UpdateMonthSelection((int)YearComboBox.SelectedItem);
+            UpdateMonthSelection((int)YearComboBox.SelectedItem, MonthComboBox.SelectedIndex);
         }
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
@@ -202,7 +211,12 @@ namespace ChineseCalendar.Views
         }
         private void DateSelectButton_Click(object sender, RoutedEventArgs e)
         {
+            int desiredYear = (int)YearComboBox.SelectedItem;
+            int desiredMonth = 0;
+            desiredMonth = (int)MonthComboBox.SelectedIndex + 1;
 
+            LoadDate(desiredYear, desiredMonth);
+            
         }
     }
 }

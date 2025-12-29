@@ -28,6 +28,14 @@ namespace ChineseCalendar.Services
         /// <returns></returns>
         public String MonthToString(int monthNum)
         {
+            while (monthNum > 12)
+            {
+                monthNum = monthNum - 12;
+            }
+            while (monthNum <= 0)
+            {
+                monthNum = monthNum + 12;
+            }
             return monthNameDict[monthNum-1].Substring(0, 3);
         }
 
@@ -48,15 +56,14 @@ namespace ChineseCalendar.Services
         }
 
         /// <summary>
-        /// Converts the 3-char english word for the months into the chinese characters.
+        /// Converts the month number for the months into the chinese characters.
         /// </summary>
-        /// <param name="english">The month name, represented as its 3-char code.</param>
+        /// <param name="monthNum">The month index, indicating the month order.</param>
         /// <returns></returns>
-        public String MonthToChinese(String english)
+        public String MonthToChinese(int monthNum)
         {
             String translatedName = "";
-            int monthInt = this.MonthToInt(english);
-            String monthString = monthInt.ToString();
+            String monthString = monthNum.ToString();
             if (monthString.Length == 1)
             {
                 switch (monthString[0])
@@ -94,7 +101,7 @@ namespace ChineseCalendar.Services
             }
             else
             {
-                switch (monthInt.ToString()[1])
+                switch (monthString[1])
                 {
                     case '0':
                         translatedName += "十";
@@ -111,6 +118,66 @@ namespace ChineseCalendar.Services
             }
             translatedName += "月";
             return translatedName;
+        }
+
+        /// <summary>
+        /// Converts the Chinese Month name to its corresponding month order
+        /// </summary>
+        /// <param name="chinese">The chinese characters</param>
+        /// <returns>The month order</returns>
+        public int ChineseToInt(String chinese)
+        {
+            int translatedWord = 0;
+            String numbers = chinese.Substring(0, chinese.Length - 1);
+            if (numbers.Length == 1)
+            {
+                switch (numbers[0])
+                {
+                    case '一':
+                        translatedWord = 1;
+                        break;
+                    case '二':
+                        translatedWord = 2;
+                        break;
+                    case '三':
+                        translatedWord = 3;
+                        break;
+                    case '四':
+                        translatedWord = 4;
+                        break;
+                    case '五':
+                        translatedWord = 5;
+                        break;
+                    case '六':
+                        translatedWord = 6;
+                        break;
+                    case '七':
+                        translatedWord = 7;
+                        break;
+                    case '八':
+                        translatedWord = 8;
+                        break;
+                    case '九':
+                        translatedWord = 9;
+                        break;
+                    case '十':
+                        translatedWord = 10;
+                        break;
+                }
+            }
+            else if (chinese.Length == 2)
+            {
+                switch(numbers[1])
+                {
+                    case '一':
+                        translatedWord = 11;
+                        break;
+                    case '二':
+                        translatedWord = 12;
+                        break;
+                }
+            }
+            return translatedWord;
         }
     }
 }

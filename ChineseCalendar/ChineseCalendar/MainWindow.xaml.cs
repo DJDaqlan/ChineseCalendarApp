@@ -28,7 +28,8 @@ namespace ChineseCalendar
 
         private void CalendarButton_Click(object sender, RoutedEventArgs e)
         {
-            this.LoadWindow(new CalendarWindow());
+            //this.LoadWindow(new CalendarWindow());
+            this.LoadWindow(new ChineseCalendarWindow());
         }
 
         public void LoadWindow(Window newWindow)
