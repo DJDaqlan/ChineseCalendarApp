@@ -1,0 +1,30 @@
+﻿<Page x:Class="ChineseCalendar.Views.AddChineseEventPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ChineseCalendar.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddEventPage"
+      Background="White">
+    <Grid>
+        <Label x:Name="HeadingLabel" Margin="358,34,358,382" Content="Add Event" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label x:Name="EventNameLabel" Content="Event Name:" HorizontalAlignment="Left" Margin="100,102,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label x:Name="RepeatLabel" Content="Repeating:" HorizontalAlignment="Left" Margin="100,205,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <CheckBox x:Name="MonthCheckBox" Content="Month" HorizontalAlignment="Left" Margin="355,213,0,0" VerticalAlignment="Top" Checked="MonthCheckBox_Checked" Unchecked="MonthCheckBox_Unchecked"/>
+        <CheckBox x:Name="YearCheckBox" Content="Year" HorizontalAlignment="Left" Margin="243,213,0,0" VerticalAlignment="Top" Checked="YearCheckBox_Checked" Unchecked="YearCheckBox_Unchecked"/>
+        <Label x:Name="DateLabel" Content="Date" HorizontalAlignment="Left" Margin="100,156,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.184,0.578" FontWeight="Bold"/>
+        <TextBox x:Name="NameTextBox" HorizontalAlignment="Left" Margin="264,110,0,0" TextWrapping="Wrap" Text="Enter Name here" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="DayComboBox" HorizontalAlignment="Left" Margin="479,160,0,0" VerticalAlignment="Top" Width="60"/>
+        <ComboBox x:Name="MonthComboBox" HorizontalAlignment="Left" Margin="333,160,0,0" VerticalAlignment="Top" Width="100" SelectionChanged="MonthComboBox_SelectionChanged"/>
+        <CheckBox x:Name="DayCheckBox" Content="Day" HorizontalAlignment="Left" Height="20" Margin="486,213,0,0" VerticalAlignment="Top" Width="46" Checked="DayCheckBox_Checked" Unchecked="DayCheckBox_Unchecked"/>
+        <ComboBox x:Name="YearComboBox" HorizontalAlignment="Left" Margin="229,160,0,0" VerticalAlignment="Top" Width="70" SelectionChanged="YearComboBox_SelectionChanged"/>
+        <Button x:Name="EnterButton" Content="Enter Event" HorizontalAlignment="Left" Margin="324,313,0,0" VerticalAlignment="Top" FontWeight="Bold" Click="EnterButton_Click"/>
+        <Popup x:Name="SuccessPopup" Placement="Center" StaysOpen="False" AllowsTransparency="True" IsOpen="True" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <Border Background="#C62828" CornerRadius="18" Padding="14">
+                <TextBlock x:Name="PopupText" Text="Event Added Successfully" Foreground="#FFF3C4" FontWeight="Bold" FontSize="14"></TextBlock>
+            </Border>
+        </Popup>
+    </Grid>
+</Page>

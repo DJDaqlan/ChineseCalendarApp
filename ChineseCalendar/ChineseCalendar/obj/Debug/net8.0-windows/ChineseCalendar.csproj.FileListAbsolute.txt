@@ -23,3 +23,5 @@ C:\Users\daqla\OneDrive\Desktop\ChineseCalendarApp\ChineseCalendar\ChineseCalend
 C:\Users\daqla\OneDrive\Desktop\ChineseCalendarApp\ChineseCalendar\ChineseCalendar\obj\Debug\net8.0-windows\Views\CalendarWindow.baml
 C:\Users\daqla\OneDrive\Desktop\ChineseCalendarApp\ChineseCalendar\ChineseCalendar\obj\Debug\net8.0-windows\Views\ChineseCalendarWindow.g.cs
 C:\Users\daqla\OneDrive\Desktop\ChineseCalendarApp\ChineseCalendar\ChineseCalendar\obj\Debug\net8.0-windows\Views\ChineseCalendarWindow.baml
+C:\Users\daqla\OneDrive\Desktop\ChineseCalendarApp\ChineseCalendar\ChineseCalendar\obj\Debug\net8.0-windows\Views\AddChineseEventPage.g.cs
+C:\Users\daqla\OneDrive\Desktop\ChineseCalendarApp\ChineseCalendar\ChineseCalendar\obj\Debug\net8.0-windows\Views\AddChineseEventPage.baml

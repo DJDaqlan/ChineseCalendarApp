@@ -34,10 +34,8 @@ namespace ChineseCalendar.Views
         public ChineseCalendarWindow()
         {
             InitializeComponent();
-            displayedDate = DateTime.Now;
+            displayedDate = DateTime.Today;
             calendar = new CalendarService(CalendarService.calendarType.LunarChinese);
-            calendar.SetYear(displayedDate.Year);
-            calendar.SetMonth(displayedDate.Month);
             LoadDate(calendar.GetYear(), calendar.GetMonth());
             LoadDateSelectors();
             LoadZodiac();
@@ -51,6 +49,11 @@ namespace ChineseCalendar.Views
         {
             newWindow.Show();
             this.Close();
+        }
+
+        public void LoadPage(String pagePath)
+        {
+            MainFrame.Source = new Uri(pagePath, UriKind.Relative);
         }
 
         /// <summary>
@@ -127,9 +130,17 @@ namespace ChineseCalendar.Views
                     Child = dayLabel
                 };
 
+                // Format to signify CNY
                 if (month == 1 && d == 1)
                 {
                     cell.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#C62828"));
+                }
+
+                // Format to signify today's date
+                if (new ChineseLunisolarCalendar().ToDateTime(year, month, d, 0, 0, 0, 0).Equals(DateTime.Today))
+                {
+                    cell.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7C59"));
+                    dayLabel.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFF"));
                 }
 
                 Grid.SetRow(cell, row);
@@ -217,6 +228,11 @@ namespace ChineseCalendar.Views
 
             LoadDate(desiredYear, desiredMonth);
             
+        }
+
+        private void AddEventButton_Click(object sender, RoutedEventArgs e)
+        {
+            LoadPage("AddChineseEventPage.xaml");
         }
     }
 }

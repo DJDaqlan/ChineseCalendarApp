@@ -23,13 +23,23 @@ namespace ChineseCalendar.Services
 
         int displayedYear;
         int displayedMonth;
+        int displayedDay;
         public CalendarService(calendarType version = calendarType.Gregorian)
         {
             chineseCalendar = new ChineseLunisolarCalendar();
             dateConverter = new DateConverterService();
             this.version = version;
-            displayedYear = DateTime.Today.Year;
-            displayedMonth = DateTime.Today.Month;
+            if (version.Equals(calendarType.Gregorian))
+            {
+                displayedYear = DateTime.Today.Year;
+                displayedMonth = DateTime.Today.Month;
+                displayedDay = DateTime.Today.Day;
+            }
+            else if (version.Equals(calendarType.LunarChinese)) {
+                displayedYear = chineseCalendar.GetYear(DateTime.Today);
+                displayedMonth = chineseCalendar.GetMonth(DateTime.Today);
+                displayedDay = chineseCalendar.GetDayOfMonth(DateTime.Today);
+            }
         }
 
         public int GetYear() 
@@ -44,14 +54,23 @@ namespace ChineseCalendar.Services
         { 
             return this.displayedMonth; 
         }
+        public int GetMonth(String chinese)
+        {
+            return dateConverter.ChineseToInt(chinese.Substring(0, chinese.Length - 1));
+        }
         public void SetMonth(int month) 
         {
             this.displayedMonth = month;
         }
 
-        public int GetMonth(String chinese)
+        public int GetDay()
         {
-            return dateConverter.ChineseToInt(chinese.Substring(0, chinese.Length - 1));
+            return this.displayedDay;
+        }
+
+        public void SetDay(int day)
+        {
+            this.displayedDay = day;
         }
 
         /// <summary>
@@ -246,6 +265,17 @@ namespace ChineseCalendar.Services
                 dayName = chineseCalendar.ToDateTime(year, month, 1, 0, 0, 0, 0).DayOfWeek;
             }
             return dayName;
+        }
+
+        public String[] GetDayRange(int year, int month)
+        {
+            int daysNum = this.GetNumDays(year, month);
+            String[] days = new String[daysNum];
+            for (int d = 0; d < daysNum; d++)
+            {
+                days[d] = (d + 1).ToString();
+            }
+            return days;
         }
 
         /// <summary>
