@@ -128,6 +128,12 @@ namespace ChineseCalendar.Services
         public int ChineseToInt(String chinese)
         {
             int translatedWord = 0;
+            // Account for leap months
+            if (chinese.Length == 3)
+            {
+                chinese = chinese.Substring(1, chinese.Length - 1);
+            }
+            // Remove the Hanzi 月 (month)
             String numbers = chinese.Substring(0, chinese.Length - 1);
             if (numbers.Length == 1)
             {

@@ -3,12 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\daqla\\OneDrive\\Desktop\\ChineseCalendarApp\\ChineseCalendar\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E8523007-AA71-4EA7-9133-39AE02B2FE43}|ChineseCalendar\\ChineseCalendar.csproj|c:\\users\\daqla\\onedrive\\desktop\\chinesecalendarapp\\chinesecalendar\\chinesecalendar\\views\\addchineseeventpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E8523007-AA71-4EA7-9133-39AE02B2FE43}|ChineseCalendar\\ChineseCalendar.csproj|solutionrelative:chinesecalendar\\views\\addchineseeventpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E8523007-AA71-4EA7-9133-39AE02B2FE43}|ChineseCalendar\\ChineseCalendar.csproj|c:\\users\\daqla\\onedrive\\desktop\\chinesecalendarapp\\chinesecalendar\\chinesecalendar\\views\\addchineseeventpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{E8523007-AA71-4EA7-9133-39AE02B2FE43}|ChineseCalendar\\ChineseCalendar.csproj|solutionrelative:chinesecalendar\\views\\addchineseeventpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{E8523007-AA71-4EA7-9133-39AE02B2FE43}|ChineseCalendar\\ChineseCalendar.csproj|c:\\users\\daqla\\onedrive\\desktop\\chinesecalendarapp\\chinesecalendar\\chinesecalendar\\services\\dataservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8523007-AA71-4EA7-9133-39AE02B2FE43}|ChineseCalendar\\ChineseCalendar.csproj|solutionrelative:chinesecalendar\\services\\dataservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,26 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AddChineseEventPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\daqla\\OneDrive\\Desktop\\ChineseCalendarApp\\ChineseCalendar\\ChineseCalendar\\Views\\AddChineseEventPage.xaml.cs",
-              "RelativeDocumentMoniker": "ChineseCalendar\\Views\\AddChineseEventPage.xaml.cs",
-              "ToolTip": "C:\\Users\\daqla\\OneDrive\\Desktop\\ChineseCalendarApp\\ChineseCalendar\\ChineseCalendar\\Views\\AddChineseEventPage.xaml.cs",
-              "RelativeToolTip": "ChineseCalendar\\Views\\AddChineseEventPage.xaml.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "Title": "DataService.cs",
+              "DocumentMoniker": "C:\\Users\\daqla\\OneDrive\\Desktop\\ChineseCalendarApp\\ChineseCalendar\\ChineseCalendar\\Services\\DataService.cs",
+              "RelativeDocumentMoniker": "ChineseCalendar\\Services\\DataService.cs",
+              "ToolTip": "C:\\Users\\daqla\\OneDrive\\Desktop\\ChineseCalendarApp\\ChineseCalendar\\ChineseCalendar\\Services\\DataService.cs",
+              "RelativeToolTip": "ChineseCalendar\\Services\\DataService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFUAAABcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-01T06:41:00.226Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AddChineseEventPage.xaml",
-              "DocumentMoniker": "C:\\Users\\daqla\\OneDrive\\Desktop\\ChineseCalendarApp\\ChineseCalendar\\ChineseCalendar\\Views\\AddChineseEventPage.xaml",
-              "RelativeDocumentMoniker": "ChineseCalendar\\Views\\AddChineseEventPage.xaml",
-              "ToolTip": "C:\\Users\\daqla\\OneDrive\\Desktop\\ChineseCalendarApp\\ChineseCalendar\\ChineseCalendar\\Views\\AddChineseEventPage.xaml",
-              "RelativeToolTip": "ChineseCalendar\\Views\\AddChineseEventPage.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-01-01T06:40:56.524Z",
+              "WhenOpened": "2026-01-01T23:33:03.475Z",
               "EditorCaption": ""
             }
           ]

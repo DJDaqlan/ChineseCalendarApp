@@ -56,7 +56,7 @@ namespace ChineseCalendar.Services
         }
         public int GetMonth(String chinese)
         {
-            return dateConverter.ChineseToInt(chinese.Substring(0, chinese.Length - 1));
+            return dateConverter.ChineseToInt(chinese);
         }
         public void SetMonth(int month) 
         {
@@ -220,17 +220,17 @@ namespace ChineseCalendar.Services
         }
         
         /// <summary>
-        /// Gets the number of days within a specific month, within a specific year
+        /// Gets the number of days within a specific month, within a specific year.
         /// </summary>
-        /// <param name="year">The suggested year</param>
-        /// <param name="month">The suggested month</param>
+        /// <param name="year">The suggested year.</param>
+        /// <param name="month">The suggested month, starting at index 0.</param>
         /// <returns>The number of days alloted in that specific month of that specific year.</returns>
         public int GetNumDays(int year, int month)
         {
             int dayNum = 0;
             if (version.Equals(calendarType.Gregorian))
             {
-                if ((month % 2 == 1 && month < 8) || (month % 2 == 0 && month > 7))
+                if ((month % 2 == 0 && month < 7) || (month % 2 == 1 && month > 6))
                 {
                     dayNum = 31;
                 }
@@ -241,7 +241,7 @@ namespace ChineseCalendar.Services
             }
             else if (version.Equals(calendarType.LunarChinese))
             {
-                dayNum = chineseCalendar.GetDaysInMonth(year, month);
+                dayNum = chineseCalendar.GetDaysInMonth(year, month+1);
             }
             return dayNum;
         }
@@ -267,6 +267,12 @@ namespace ChineseCalendar.Services
             return dayName;
         }
 
+        /// <summary>
+        /// Gets the range of days to put into a Combo box.
+        /// </summary>
+        /// <param name="year">The year of choice</param>
+        /// <param name="month">The month index, starting at 0</param>
+        /// <returns></returns>
         public String[] GetDayRange(int year, int month)
         {
             int daysNum = this.GetNumDays(year, month);

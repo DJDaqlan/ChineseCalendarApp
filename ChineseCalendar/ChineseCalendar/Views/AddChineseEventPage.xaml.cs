@@ -15,6 +15,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Text.Json;
+using System.IO;
 
 namespace ChineseCalendar.Views
 {
@@ -23,52 +25,126 @@ namespace ChineseCalendar.Views
     /// </summary>
     public partial class AddChineseEventPage : Page
     {
+        String baseInput;
         const int YEAR_RANGE = 100;
         CalendarService calendar;
+        DataService dataService;
         public AddChineseEventPage()
         {
             InitializeComponent();
             calendar = new CalendarService(CalendarService.calendarType.LunarChinese);
+            dataService = new DataService("CalendarEvents.json", System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "ChineseCalendar"));
             UpdateYearSelection(DateTime.Now.Year);
+            baseInput = NameTextBox.Text;
         }
+
+        /// <summary>
+        /// Updates/Initialises the year selection, with the suggested year as the centre.
+        /// </summary>
+        /// <param name="year">The median year.</param>
         private void UpdateYearSelection(int year)
         {
             YearComboBox.ItemsSource = calendar.GetYearRange(year, YEAR_RANGE);
             YearComboBox.SelectedItem = year;
         }
 
+        /// <summary>
+        /// Updates the month selection with the suggested range of choices. 
+        /// Will set the selected choice to empty string to avoid logic errors with leap years
+        /// </summary>
+        /// <param name="choices">An array of potential month choices</param>
         private void UpdateMonthSelection(String[] choices)
         {
             MonthComboBox.ItemsSource = choices;
             MonthComboBox.SelectedItem = " ";
         }
 
+        /// <summary>
+        /// Updates the day selection with the suggested range of choices.
+        /// Will set the selected choice to an empty string to avoid logic errors with months having 
+        /// variable number of days.
+        /// </summary>
+        /// <param name="choices">An array of potential day choices</param>
         private void UpdateDaySelection(String[] choices)
         {
             DayComboBox.ItemsSource = choices;
             DayComboBox.SelectedIndex = DayComboBox.SelectedIndex;
         }
 
+        /// <summary>
+        /// Simple implementation ensures that all entries are not errors and give syntax errors. 
+        /// Gives no implementation that the entries are correct, just if they are valid
+        /// </summary>
+        /// <param name="name">Input for event name</param>
+        /// <param name="year">Input for event year</param>
+        /// <param name="month">Input for event month</param>
+        /// <param name="day">Input for event day</param>
+        /// <returns>true of false determining if all inputs are valid</returns>
+        private bool IsValidEntry(String name, int year, int month, int day)
+        {
+            if (name.Equals(baseInput))
+            {
+                MessageBox.Show("Please enter a name");
+                return false;
+            }
+            if (year == null)
+            {
+                MessageBox.Show("Please enter a valid year");
+                return false;
+            }
+            if (month == null || month == 0)
+            {
+                MessageBox.Show("Please enter a valid month");
+                return false;
+            }
+            if (day == null || day == 0)
+            {
+                MessageBox.Show("Please enter a valid day");
+                return false;
+            }
+                return true;
+        }
+
         private void EnterButton_Click(object sender, RoutedEventArgs e)
         {
-            CalendarEvent newEvent = new CalendarEvent();
-            if (true)
+            String name = NameTextBox.Text;
+            int year = int.Parse(YearComboBox.SelectedItem.ToString());
+            int month = calendar.GetMonth((String)MonthComboBox.SelectedItem);
+            int day = int.Parse(DayComboBox.SelectedItem.ToString());
+            bool repeatYear = YearCheckBox.IsChecked == true;
+            bool repeatMonth = MonthCheckBox.IsChecked == true;
+            bool repeatDay = DayCheckBox.IsChecked == true;
+
+            if (IsValidEntry(name, year, month, day))
             {
+                dataService.AddEntry(new CalendarEvent
+                {
+                    Title = name,
+                    Date = new LunarDate
+                    {
+                        Year = year,
+                        Month = month,
+                        Day = day
+                    },
+                    RepeatYear = repeatYear,
+                    RepeatMonth = repeatMonth,
+                    RepeatDay = repeatDay
+                }, CalendarService.calendarType.LunarChinese); // Because this is the page to add a Chinese event linked to the Chinese Calendar
+                SuccessPopup.IsOpen = true;
             }
-            
         }
 
         private void YearComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int year = (int)YearComboBox.SelectedItem;
+            int year = int.Parse(YearComboBox.SelectedItem.ToString());
             String[] monthRange = calendar.GetMonthRange(year);
             UpdateMonthSelection(monthRange);
-
+            UpdateDaySelection(calendar.GetDayRange(year, 0));
         }
 
         private void MonthComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int year = (int)YearComboBox.SelectedItem;
+            int year = int.Parse(YearComboBox.SelectedItem.ToString());
             int month = MonthComboBox.SelectedIndex;
             String[] days = calendar.GetDayRange(year, month);
             UpdateDaySelection(days);
@@ -111,11 +187,6 @@ namespace ChineseCalendar.Views
         }
 
         private void NameTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void HidePopupButton_Click(object sender, RoutedEventArgs e)
         {
 
         }

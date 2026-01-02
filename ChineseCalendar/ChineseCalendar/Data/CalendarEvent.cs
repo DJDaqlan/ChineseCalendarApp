@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace ChineseCalendar.Data
 {
-    internal class CalendarEvent
+    public class CalendarEvent
     {
-        public String Id;
-        public String Name;
-        public String StartDate;
+        public String Title { get; set; }
+        public LunarDate Date { get; set; }
+        public bool RepeatYear { get; set; }
+        public bool RepeatMonth { get; set; }
+        public bool RepeatDay { get; set; }
     }
 }

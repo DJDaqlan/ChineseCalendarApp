@@ -167,7 +167,7 @@ namespace ChineseCalendar.Views
             MonthComboBox.ItemsSource = monthRange;
             calendar.SetMonth(month);
             // CAUTION: Has high coupling with MonthLabel. Suggested to find another method.
-            MonthComboBox.SelectedIndex = calendar.GetMonth(MonthLabel.Content.ToString()) + 1;
+            MonthComboBox.SelectedIndex = calendar.GetMonth(MonthLabel.Content.ToString()) - 1;
         }
         
         /// <summary>
@@ -210,7 +210,7 @@ namespace ChineseCalendar.Views
         }
         public void YearComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            UpdateMonthSelection((int)YearComboBox.SelectedItem, MonthComboBox.SelectedIndex);
+            UpdateMonthSelection(int.Parse(YearComboBox.SelectedItem.ToString()), MonthComboBox.SelectedIndex);
         }
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
@@ -222,7 +222,7 @@ namespace ChineseCalendar.Views
         }
         private void DateSelectButton_Click(object sender, RoutedEventArgs e)
         {
-            int desiredYear = (int)YearComboBox.SelectedItem;
+            int desiredYear = int.Parse(YearComboBox.SelectedItem.ToString());
             int desiredMonth = 0;
             desiredMonth = (int)MonthComboBox.SelectedIndex + 1;
 

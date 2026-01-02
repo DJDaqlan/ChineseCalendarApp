@@ -220,7 +220,7 @@ namespace ChineseCalendar.Views
 
         private void SelectDateButton_Click(object sender, RoutedEventArgs e)
         {
-            int desiredYear = (int)YearComboBox.SelectedItem;
+            int desiredYear = int.Parse(YearComboBox.SelectedItem.ToString());
             int desiredMonth = MonthComboBox.SelectedIndex+1;
 
             displayedDateTime = calendar.ChangeDate(desiredYear, desiredMonth);
