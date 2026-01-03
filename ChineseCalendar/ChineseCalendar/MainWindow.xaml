@@ -7,9 +7,25 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="261" Width="488">
     <Grid>
-        <Label x:Name="TitleLabel" Content="Chinese Calendar" HorizontalAlignment="Center" Margin="0,27,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="EventLabel" Content="Today's Event" HorizontalAlignment="Left" Margin="44,73,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="CalendarButton" Content="View Calendar" HorizontalAlignment="Center" Margin="0,172,0,0" VerticalAlignment="Top" Height="33" Width="130" Click="CalendarButton_Click"/>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label x:Name="TitleLabel" Grid.Row="0" Content="Chinese Calendar" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="30" FontFamily="Sans Serif Collection" FontWeight="SemiBold" Foreground="#2B2B2B"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="EventLabelSubheading" Grid.Column="1" Content="Today's Event:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="15" FontWeight="Medium" FontFamily="Sans Serif Collection"/>
+            <Label x:Name="EventLabel" Grid.Column="3" Content="Nothing today" HorizontalAlignment="Center" VerticalAlignment="Top" Width="180" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="15" FontWeight="Regular" Foreground="#9C1C1C" FontFamily="Sans Serif Collection"/>
+        </Grid>
+        <Button x:Name="CalendarButton" Grid.Row="3" Content="View Calendar" HorizontalAlignment="Center" VerticalAlignment="Top" Width="180" Height="44" Click="CalendarButton_Click" Mouse.MouseEnter="CalendarButton_MouseEnter" Mouse.MouseDown="CalendarButton_MouseDown" Mouse.MouseLeave="CalendarButton_MouseLeave" Mouse.MouseUp="CalendarButton_MouseUp" Background="#9C1C1C" Foreground="#F7F3E8" FontFamily="Sans Serif Collection" FontWeight="Medium"/>
     </Grid>
 </Window>

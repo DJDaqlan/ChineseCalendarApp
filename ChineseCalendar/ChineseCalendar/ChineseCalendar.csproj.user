@@ -14,5 +14,8 @@
     <Compile Update="Views\ChineseCalendarWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\ViewChineseEventPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

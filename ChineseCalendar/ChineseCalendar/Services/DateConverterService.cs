@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChineseCalendar.Data;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace ChineseCalendar.Services
     internal class DateConverterService
     {
         Dictionary<int, String> monthNameDict = new Dictionary<int, String>();
+        ChineseLunisolarCalendar chineseCalendar;
 
         public DateConverterService()
         {
@@ -19,6 +21,7 @@ namespace ChineseCalendar.Services
             for (int i = 0; i < monthArray.Length; i++) {
                 monthNameDict[i] = monthArray[i].ToString();
             }
+            chineseCalendar = new ChineseLunisolarCalendar();
         }
 
         /// <summary>
@@ -184,6 +187,65 @@ namespace ChineseCalendar.Services
                 }
             }
             return translatedWord;
+        }
+
+        /// <summary>
+        /// Converts a Lunar calendar date format into the corresponding Gregorian date
+        /// </summary>
+        /// <param name="year"></param>
+        /// <param name="month"></param>
+        /// <param name="day"></param>
+        /// <returns>DateTime signifying the Gregorian date</returns>
+        public DateTime ToGregorian(int year, int month, int day)
+        {
+            return chineseCalendar.ToDateTime(year, month, day, 0, 0, 0, 0);
+        }
+
+        /// <summary>
+        /// Converts a Gregorian date format into the coresponding Lunar calendar format.
+        /// </summary>
+        /// <param name="date">The Gregorian date</param>
+        /// <returns>3 integers representing year, month and day respectively</returns>
+        public LunarDate ToLunar(DateTime date)
+        {
+            int year = chineseCalendar.GetYear(date);
+            int month = chineseCalendar.GetMonth(date);
+            int day = chineseCalendar.GetDayOfMonth(date);
+            return new LunarDate { Year = year, Month = month, Day = day};
+        }
+
+        /// <summary>
+        /// Gets the next occurrence of a Lunar Calendar event
+        /// </summary>
+        /// <param name="eventDate">The Lunar Calendar event</param>
+        /// <returns>The Lunar Date that the event will occur next</returns>
+        public LunarDate GetNextOccurrence(LunarDate eventDate) 
+        {
+            LunarDate today = ToLunar(DateTime.Today);
+            int nextYear = eventDate.Year;
+            int nextMonth = eventDate.Month;
+            int nextDay = eventDate.Day;
+            // Having the dates = 0 means that the date format (year, month or day) is repeating
+            if (eventDate.Year == 0 || eventDate.Year == today.Year)
+            {
+                if (eventDate.Month < today.Month)
+                {
+                    nextYear = today.Year + 1;
+                }
+                else if (eventDate.Month == 0 || eventDate.Month == today.Month)
+                {
+                    if (eventDate.Day < today.Day)
+                    {
+                        nextMonth = today.Month + 1;
+                    }
+                }
+            }
+
+            return new LunarDate { 
+                Year = nextYear,
+                Month = nextMonth,
+                Day = nextDay
+            };
         }
     }
 }

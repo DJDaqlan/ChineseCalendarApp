@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\daqla\\OneDrive\\Desktop\\ChineseCalendarApp\\ChineseCalendar\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E8523007-AA71-4EA7-9133-39AE02B2FE43}|ChineseCalendar\\ChineseCalendar.csproj|c:\\users\\daqla\\onedrive\\desktop\\chinesecalendarapp\\chinesecalendar\\chinesecalendar\\services\\dataservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E8523007-AA71-4EA7-9133-39AE02B2FE43}|ChineseCalendar\\ChineseCalendar.csproj|solutionrelative:chinesecalendar\\services\\dataservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E8523007-AA71-4EA7-9133-39AE02B2FE43}|ChineseCalendar\\ChineseCalendar.csproj|c:\\users\\daqla\\onedrive\\desktop\\chinesecalendarapp\\chinesecalendar\\chinesecalendar\\views\\chinesecalendarwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8523007-AA71-4EA7-9133-39AE02B2FE43}|ChineseCalendar\\ChineseCalendar.csproj|solutionrelative:chinesecalendar\\views\\chinesecalendarwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8523007-AA71-4EA7-9133-39AE02B2FE43}|ChineseCalendar\\ChineseCalendar.csproj|c:\\users\\daqla\\onedrive\\desktop\\chinesecalendarapp\\chinesecalendar\\chinesecalendar\\views\\calendarwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8523007-AA71-4EA7-9133-39AE02B2FE43}|ChineseCalendar\\ChineseCalendar.csproj|solutionrelative:chinesecalendar\\views\\calendarwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +23,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "DataService.cs",
-              "DocumentMoniker": "C:\\Users\\daqla\\OneDrive\\Desktop\\ChineseCalendarApp\\ChineseCalendar\\ChineseCalendar\\Services\\DataService.cs",
-              "RelativeDocumentMoniker": "ChineseCalendar\\Services\\DataService.cs",
-              "ToolTip": "C:\\Users\\daqla\\OneDrive\\Desktop\\ChineseCalendarApp\\ChineseCalendar\\ChineseCalendar\\Services\\DataService.cs",
-              "RelativeToolTip": "ChineseCalendar\\Services\\DataService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFUAAABcAAAAAAAAAA==",
+              "Title": "ChineseCalendarWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\daqla\\OneDrive\\Desktop\\ChineseCalendarApp\\ChineseCalendar\\ChineseCalendar\\Views\\ChineseCalendarWindow.xaml.cs",
+              "RelativeDocumentMoniker": "ChineseCalendar\\Views\\ChineseCalendarWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\daqla\\OneDrive\\Desktop\\ChineseCalendarApp\\ChineseCalendar\\ChineseCalendar\\Views\\ChineseCalendarWindow.xaml.cs",
+              "RelativeToolTip": "ChineseCalendar\\Views\\ChineseCalendarWindow.xaml.cs",
+              "ViewState": "AgIAAE0AAAAAAAAAAAAkwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-01T23:33:03.475Z",
+              "WhenOpened": "2026-01-03T13:51:31.9Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CalendarWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\daqla\\OneDrive\\Desktop\\ChineseCalendarApp\\ChineseCalendar\\ChineseCalendar\\Views\\CalendarWindow.xaml.cs",
+              "RelativeDocumentMoniker": "ChineseCalendar\\Views\\CalendarWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\daqla\\OneDrive\\Desktop\\ChineseCalendarApp\\ChineseCalendar\\ChineseCalendar\\Views\\CalendarWindow.xaml.cs",
+              "RelativeToolTip": "ChineseCalendar\\Views\\CalendarWindow.xaml.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAowEsAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-03T13:43:57.47Z",
               "EditorCaption": ""
             }
           ]

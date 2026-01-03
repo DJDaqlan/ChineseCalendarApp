@@ -1,4 +1,5 @@
-﻿using ChineseCalendar.Services;
+﻿using ChineseCalendar.Data;
+using ChineseCalendar.Services;
 using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
@@ -22,14 +23,12 @@ namespace ChineseCalendar.Views
     public partial class CalendarWindow : Window, WindowOperable
     {
         const int YEAR_RANGE = 100;
-        DateTime displayedDateTime;
         CalendarService calendar;
         public CalendarWindow()
         {
             InitializeComponent();
             calendar = new CalendarService(CalendarService.calendarType.Gregorian);
-            displayedDateTime = DateTime.Now;
-            LoadDate(displayedDateTime);
+            LoadDate(DateTime.Today);
             LoadDateSelectors();
         }
 
@@ -49,12 +48,12 @@ namespace ChineseCalendar.Views
         /// <param name="date"></param>
         private void LoadDate(DateTime date)
         {
-            (int, int, int) dateNums = calendar.GetDateNum(date);
+            LunarDate dateNums = calendar.GetDateNum(date);
             (String, String, String) dateStrs = calendar.GetDateStr(date);
             MonthLabel.Content = dateStrs.Item2;
             YearLabel.Content = dateStrs.Item1;
-            InitialiseDays(dateNums.Item1, dateNums.Item2);
-            PopulateDays(dateNums.Item2, dateNums.Item1);
+            InitialiseDays(dateNums.Year, dateNums.Month);
+            PopulateDays(dateNums.Year, dateNums.Month);
         }
 
         /// <summary>
@@ -73,7 +72,7 @@ namespace ChineseCalendar.Views
                 DaysGrid.ColumnDefinitions.Add(new ColumnDefinition());
             }
             int increment = 0;
-            if (calendar.GetFirstDayOfMonth(year, month).Equals(DayOfWeek.Saturday)) increment += 1;
+            if (calendar.GetFirstDayOfMonth(year, month).Equals(DayOfWeek.Saturday) || calendar.GetFirstDayOfMonth(year, month).Equals(DayOfWeek.Friday)) increment += 1;
             if (daysNum % 7 != 0) increment += 1;
             int rows = daysNum / 7 + increment;
             for (int i = 0; i < rows; i++)
@@ -88,20 +87,15 @@ namespace ChineseCalendar.Views
         /// </summary>
         /// <param name="year">The year presented</param>
         /// <param name="month">The month presented</param>
-        private void PopulateDays(int month, int year)
+        private void PopulateDays(int year, int month)
         {
             bool isShowCurrMonth = false;
-            bool isLeapMonth = false;
-            if (displayedDateTime.Year.Equals(DateTime.Now.Year))
+            if (calendar.GetYear().Equals(DateTime.Now.Year))
             {
-                if (displayedDateTime.Month.Equals(DateTime.Now.Month))
+                if (calendar.GetMonth().Equals(DateTime.Now.Month))
                 {
                     isShowCurrMonth = true;
                 }
-            }
-            if (displayedDateTime.Month == 2 && DateTime.IsLeapYear(year))
-            {
-                isLeapMonth = true;
             }
             int startingDay = (int)calendar.GetFirstDayOfMonth(year, month);
             int monthDays = calendar.GetNumDays(year, month);
@@ -113,10 +107,6 @@ namespace ChineseCalendar.Views
             for (int d = 1; d <= monthDays; d++)
             {
                 int day = d;
-                if (isLeapMonth && d > 29)
-                {
-                    day = 29;
-                }
                 var dayLabel = new Label 
                 {
                     Content = day.ToString(), 
@@ -167,7 +157,7 @@ namespace ChineseCalendar.Views
         private void UpdateMonthSelections(int year)
         {
             MonthComboBox.ItemsSource = Enumerable.Range(1, 12).Select(m => new DateTime(year, m, 1).ToString("MMMM")).ToList();
-            MonthComboBox.SelectedIndex = displayedDateTime.Month;
+            MonthComboBox.SelectedIndex = calendar.GetMonth();
         }
 
         /// <summary>
@@ -177,14 +167,14 @@ namespace ChineseCalendar.Views
         private void UpdateYearSelections(int year)
         {
             YearComboBox.ItemsSource = Enumerable.Range(year - (YEAR_RANGE / 2), YEAR_RANGE + 1).ToList();
-            YearComboBox.SelectedItem = displayedDateTime.Year;
+            YearComboBox.SelectedItem = calendar.GetYear();
         }
 
         private void PrevMonthButton_Click(object sender, RoutedEventArgs e)
         {
-            int shownYear = displayedDateTime.Year;
-            int shownMonth = displayedDateTime.Month;
-            int newMonth = shownMonth - 1;
+            int shownYear = calendar.GetYear();
+            int shownMonth = calendar.GetMonth();
+            int newMonth = calendar.GetMonth() - 1;
             int newYear = shownYear;
             if (newMonth <= 0)
             {
@@ -192,30 +182,29 @@ namespace ChineseCalendar.Views
                 newMonth = 12;
             }
 
-            displayedDateTime = calendar.ChangeDate(newYear, newMonth);
-            LoadDate(displayedDateTime);
+            calendar.ChangeDate(newYear, newMonth);
+            LoadDate(new DateTime(calendar.GetYear(), calendar.GetMonth(), calendar.GetDay(), 0, 0, 0));
         }
 
         private void NextMonthButton_Click(object sender, RoutedEventArgs e)
         {
-            int shownYear = displayedDateTime.Year;
-            int shownMonth = displayedDateTime.Month;
-            int newMonth = shownMonth + 1;
-            int newYear = shownYear;
+            int newMonth = calendar.GetMonth() + 1;
+            int newYear = calendar.GetYear();
             if (newMonth > 12)
             {
                 newYear += 1;
                 newMonth = 1;
             }
 
-            displayedDateTime = calendar.ChangeDate(newYear, newMonth);
-            LoadDate(displayedDateTime);
+            calendar.ChangeDate(newYear, newMonth);
+            LoadDate(new DateTime(calendar.GetYear(), calendar.GetMonth(), calendar.GetDay(), 0, 0, 0));
         }
 
         private void CurrMonthButton_Click(object sender, RoutedEventArgs e)
         {
-            displayedDateTime = DateTime.Now;
-            LoadDate(displayedDateTime);
+            DateTime today = DateTime.Today;
+            calendar.ChangeDate(today.Year, today.Month);
+            LoadDate(today);
         }
 
         private void SelectDateButton_Click(object sender, RoutedEventArgs e)
@@ -223,8 +212,8 @@ namespace ChineseCalendar.Views
             int desiredYear = int.Parse(YearComboBox.SelectedItem.ToString());
             int desiredMonth = MonthComboBox.SelectedIndex+1;
 
-            displayedDateTime = calendar.ChangeDate(desiredYear, desiredMonth);
-            LoadDate(displayedDateTime);
+            calendar.ChangeDate(desiredYear, desiredMonth);
+            LoadDate(new DateTime(calendar.GetYear(), calendar.GetMonth(), calendar.GetDay(), 0, 0, 0));
         }
 
         private void ChineseCalendarButton_Click(object sender, RoutedEventArgs e)

@@ -25,13 +25,15 @@ namespace ChineseCalendar.Views
     /// </summary>
     public partial class AddChineseEventPage : Page
     {
+        Frame hostFrame;
         String baseInput;
         const int YEAR_RANGE = 100;
         CalendarService calendar;
         DataService dataService;
-        public AddChineseEventPage()
+        public AddChineseEventPage(Frame hostFrame)
         {
             InitializeComponent();
+            this.hostFrame = hostFrame;
             calendar = new CalendarService(CalendarService.calendarType.LunarChinese);
             dataService = new DataService("CalendarEvents.json", System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "ChineseCalendar"));
             UpdateYearSelection(DateTime.Now.Year);
@@ -108,13 +110,16 @@ namespace ChineseCalendar.Views
         private void EnterButton_Click(object sender, RoutedEventArgs e)
         {
             String name = NameTextBox.Text;
-            int year = int.Parse(YearComboBox.SelectedItem.ToString());
-            int month = calendar.GetMonth((String)MonthComboBox.SelectedItem);
-            int day = int.Parse(DayComboBox.SelectedItem.ToString());
+
             bool repeatYear = YearCheckBox.IsChecked == true;
             bool repeatMonth = MonthCheckBox.IsChecked == true;
             bool repeatDay = DayCheckBox.IsChecked == true;
 
+            int year, month, day;
+            year = repeatYear ? 0 : int.Parse(YearComboBox.SelectedItem.ToString());
+            month = repeatMonth ? 0 : calendar.GetMonth((String)MonthComboBox.SelectedItem);
+            day = repeatDay ? 0 : int.Parse(DayComboBox.SelectedItem.ToString());
+            
             if (IsValidEntry(name, year, month, day))
             {
                 dataService.AddEntry(new CalendarEvent
@@ -189,6 +194,11 @@ namespace ChineseCalendar.Views
         private void NameTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void SuccessPopup_Closed(object sender, EventArgs e)
+        {
+            hostFrame.Navigate(new ViewChineseEventPage(hostFrame));
         }
     }
 }

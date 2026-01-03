@@ -7,40 +7,160 @@
         mc:Ignorable="d"
         Title="CalendarWindow" Height="554" Width="802">
     <Grid>
-        <Viewbox x:Name="CalendarViewBox" Stretch="Uniform" Margin="98,10,98,85">
-            <Grid Width="800" Height="600">
-                <Image Source="/Assets/CalendarTemplates/GregTemplate.png" Stretch="Fill"/>
-                <Label x:Name="MonthLabel" Content="Month" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,32,0,0" FontWeight="Bold" Foreground="White" FontSize="36"/>
-                <Label x:Name="YearLabel" Content="Year" HorizontalAlignment="Left" Margin="44,18,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="White" FontSize="36"/>
-                <Button x:Name="PrevMonthButton" Content="Prev" Margin="294,51,467,529" FontWeight="Bold" Click="PrevMonthButton_Click"></Button>
-                <Button x:Name="NextMonthButton" Content="Next" Margin="462,51,299,529" FontWeight="Bold" Click="NextMonthButton_Click"></Button>
-                <Button x:Name="CurrDateButton" Content="Reset" Margin="374,18,374,562" FontWeight="Bold" Click="CurrMonthButton_Click"></Button>
-                <ComboBox x:Name="MonthComboBox" Margin="527,50,165,531" IsEditable="False"/>
-                <ComboBox x:Name="YearComboBox" Margin="651,50,80,531" IsEditable="False"/>
-                <Button x:Name="SelectDateButton" Margin="733,45,31,530" Content="Go" FontWeight="Bold" FontSize="16" Click="SelectDateButton_Click"/>
-                <Grid x:Name="WeekdaysGrid" Margin="10,116,10,415">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Label Grid.Column="0" Content="SUN" HorizontalContentAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18" VerticalAlignment="Center"/>
-                    <Label Grid.Column="1" Content="MON" HorizontalContentAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18" VerticalAlignment="Center"/>
-                    <Label Grid.Column="2" Content="TUE" HorizontalContentAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18" VerticalAlignment="Center"/>
-                    <Label Grid.Column="3" Content="WED" HorizontalContentAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18" VerticalAlignment="Center"/>
-                    <Label Grid.Column="4" Content="THU" HorizontalContentAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18" VerticalAlignment="Center"/>
-                    <Label Grid.Column="5" Content="FRI" HorizontalContentAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18" VerticalAlignment="Center"/>
-                    <Label Grid.Column="6" Content="SAT" HorizontalContentAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18" VerticalAlignment="Center"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="HomeButton" Grid.Row="0" Content="Home" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Height="40" Width="40" Click="HomeButton_Click"/>
+        <Grid x:Name="CalendarGrid" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Single scalable surface -->
+            <Viewbox Grid.Column="1" Stretch="Uniform">
+                <Grid Width="900" Height="700">
+
+                    <!-- Background image -->
+                    <Image Source="/Assets/CalendarTemplates/GregTemplate.png"
+                   Stretch="Fill"
+                   Panel.ZIndex="0"/>
+
+                    <!-- Overlay content -->
+                    <Grid Panel.ZIndex="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="1.4*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="0.5*"/>
+                            <RowDefinition Height="13*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="8*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Button x:Name="CurrDateButton"
+                        Grid.Row="0"
+                                    Grid.Column="4"
+                        Content="Reset"
+                        HorizontalAlignment="Center"
+                        FontWeight="Bold"
+                        Click="CurrMonthButton_Click"/>
+
+                            <Label x:Name="YearLabel"
+                                   Grid.Row="1"
+                           Grid.Column="1"
+                           Content="Year"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           FontSize="36"/>
+
+                            <Button x:Name="PrevMonthButton"
+                                    Grid.Row="1"
+                            Grid.Column="3"
+                            Height="20"
+                            Content="Prev"
+                            FontWeight="Bold"
+                            Click="PrevMonthButton_Click"/>
+
+                            <Label x:Name="MonthLabel"
+                                   Grid.Row="1"
+                           Grid.Column="4"
+                           Content="Month"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           FontSize="36"/>
+
+                            <Button x:Name="NextMonthButton"
+                                    Grid.Row="1"
+                            Grid.Column="5"
+                            Height="20"
+                            Content="Next"
+                            FontWeight="Bold"
+                            Click="NextMonthButton_Click"/>
+
+                            <ComboBox x:Name="MonthComboBox"
+                                      Grid.Row="1"
+                              Grid.Column="7"
+                              MinWidth="100"
+                              VerticalAlignment="Center"/>
+
+                            <ComboBox x:Name="YearComboBox"
+                                      Grid.Row="1"
+                              Grid.Column="9"
+                              MinWidth="100"
+                              VerticalAlignment="Center"/>
+
+                            <Button x:Name="SelectDateButton"
+                                    Grid.Row="1"
+                            Grid.Column="11"
+                            Height="20"
+                            Width="25"
+                            Content="Go"
+                            FontWeight="Bold"
+                            Click="SelectDateButton_Click"/>
+                        </Grid>
+
+                        <Grid x:Name="WeekdaysGrid" Grid.Row="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Column="0" Content="SUN" FontSize="18" FontWeight="Bold" HorizontalContentAlignment="Center"/>
+                            <Label Grid.Column="1" Content="MON" FontSize="18" FontWeight="Bold" HorizontalContentAlignment="Center"/>
+                            <Label Grid.Column="2" Content="TUE" FontSize="18" FontWeight="Bold" HorizontalContentAlignment="Center"/>
+                            <Label Grid.Column="3" Content="WED" FontSize="18" FontWeight="Bold" HorizontalContentAlignment="Center"/>
+                            <Label Grid.Column="4" Content="THU" FontSize="18" FontWeight="Bold" HorizontalContentAlignment="Center"/>
+                            <Label Grid.Column="5" Content="FRI" FontSize="18" FontWeight="Bold" HorizontalContentAlignment="Center"/>
+                            <Label Grid.Column="6" Content="SAT" FontSize="18" FontWeight="Bold" HorizontalContentAlignment="Center"/>
+                        </Grid>
+
+                        <!-- Days grid -->
+                        <Grid Grid.Row="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.9*"/>
+                                <ColumnDefinition Width="35*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid x:Name="DaysGrid" Grid.Column="1"/>
+                        </Grid>
+
+                    </Grid>
                 </Grid>
-                <Grid x:Name="DaysGrid" Margin="21,185,26,35">
-                </Grid>
-            </Grid>
-        </Viewbox>
-        <Button x:Name="ChineseCalendarButton" Content="View Chinese Calendar" HorizontalAlignment="Center" Margin="0,495,0,0" VerticalAlignment="Top" Width="142" FontWeight="Bold" Click="ChineseCalendarButton_Click"/>
-        <Button x:Name="HomeButton" Content="Home" HorizontalAlignment="Left" Margin="21,17,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="40" Width="40" Click="HomeButton_Click"/>
+            </Viewbox>
+        </Grid>
+        <Button x:Name="ChineseCalendarButton" Grid.Row="3" Content="View Chinese Calendar" HorizontalAlignment="Center" VerticalAlignment="Top" Width="142" FontWeight="Bold" Click="ChineseCalendarButton_Click"/>
     </Grid>
 </Window>

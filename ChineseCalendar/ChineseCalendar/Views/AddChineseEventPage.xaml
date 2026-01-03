@@ -9,19 +9,43 @@
       Title="AddEventPage"
       Background="White">
     <Grid>
-        <Label x:Name="HeadingLabel" Margin="358,34,358,382" Content="Add Event" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label x:Name="EventNameLabel" Content="Event Name:" HorizontalAlignment="Left" Margin="100,102,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Label x:Name="RepeatLabel" Content="Repeating:" HorizontalAlignment="Left" Margin="100,205,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <CheckBox x:Name="MonthCheckBox" Content="Month" HorizontalAlignment="Left" Margin="355,213,0,0" VerticalAlignment="Top" Checked="MonthCheckBox_Checked" Unchecked="MonthCheckBox_Unchecked"/>
-        <CheckBox x:Name="YearCheckBox" Content="Year" HorizontalAlignment="Left" Margin="243,213,0,0" VerticalAlignment="Top" Checked="YearCheckBox_Checked" Unchecked="YearCheckBox_Unchecked"/>
-        <Label x:Name="DateLabel" Content="Date" HorizontalAlignment="Left" Margin="100,156,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.184,0.578" FontWeight="Bold"/>
-        <TextBox x:Name="NameTextBox" HorizontalAlignment="Left" Margin="264,110,0,0" TextWrapping="Wrap" Text="Enter Name here" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="DayComboBox" HorizontalAlignment="Left" Margin="479,160,0,0" VerticalAlignment="Top" Width="60"/>
-        <ComboBox x:Name="MonthComboBox" HorizontalAlignment="Left" Margin="333,160,0,0" VerticalAlignment="Top" Width="100" SelectionChanged="MonthComboBox_SelectionChanged"/>
-        <CheckBox x:Name="DayCheckBox" Content="Day" HorizontalAlignment="Left" Height="20" Margin="486,213,0,0" VerticalAlignment="Top" Width="46" Checked="DayCheckBox_Checked" Unchecked="DayCheckBox_Unchecked"/>
-        <ComboBox x:Name="YearComboBox" HorizontalAlignment="Left" Margin="229,160,0,0" VerticalAlignment="Top" Width="70" SelectionChanged="YearComboBox_SelectionChanged"/>
-        <Button x:Name="EnterButton" Content="Add Event" HorizontalAlignment="Left" Margin="324,313,0,0" VerticalAlignment="Top" FontWeight="Bold" Click="EnterButton_Click"/>
-        <Popup x:Name="SuccessPopup" Placement="Center" StaysOpen="False" AllowsTransparency="True" IsOpen="False" HorizontalAlignment="Center" VerticalAlignment="Top">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="HeadingLabel" Grid.Row="1" Grid.Column="5" Content="Add Event" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label x:Name="EventNameLabel" Grid.Row="3" Grid.Column="1" Content="Event Name:" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+        <TextBox x:Name="NameTextBox" Grid.Row="3" Grid.Column="5" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Enter Name here" VerticalAlignment="Center" Width="120"/>
+        <Label x:Name="DateLabel" Grid.Row="5" Grid.Column="1" Content="Date" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-0.184,0.578" FontWeight="Bold"/>
+        <ComboBox x:Name="YearComboBox" Grid.Row="5" Grid.Column="3"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="70" SelectionChanged="YearComboBox_SelectionChanged"/>
+        <ComboBox x:Name="MonthComboBox" Grid.Row="5" Grid.Column="5" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" SelectionChanged="MonthComboBox_SelectionChanged"/>
+        <ComboBox x:Name="DayComboBox" Grid.Row="5" Grid.Column="7" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60"/>
+        <Label x:Name="RepeatLabel" Grid.Row="7" Grid.Column="1" Content="Repeating:" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold"/>
+        <CheckBox x:Name="YearCheckBox" Grid.Row="7" Grid.Column="3" Content="Year" HorizontalAlignment="Left" VerticalAlignment="Top" Checked="YearCheckBox_Checked" Unchecked="YearCheckBox_Unchecked"/>
+        <CheckBox x:Name="MonthCheckBox" Grid.Row="7" Grid.Column="5" Content="Month" HorizontalAlignment="Left" VerticalAlignment="Top" Checked="MonthCheckBox_Checked" Unchecked="MonthCheckBox_Unchecked"/>
+        <CheckBox x:Name="DayCheckBox" Grid.Row="7" Grid.Column="7" Content="Day" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="46" Checked="DayCheckBox_Checked" Unchecked="DayCheckBox_Unchecked"/>
+        <Button x:Name="EnterButton" Grid.Row="9" Grid.Column="5" Content="Add Event" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" Click="EnterButton_Click"/>
+        <Popup x:Name="SuccessPopup" Placement="Center" StaysOpen="False" AllowsTransparency="True" IsOpen="False" HorizontalAlignment="Center" VerticalAlignment="Top" Closed="SuccessPopup_Closed">
             <Border Background="#C62828" CornerRadius="18" Padding="14">
                 <TextBlock x:Name="PopupText" Text="Event Added Successfully" Foreground="#FFF3C4" FontWeight="Bold" FontSize="14"></TextBlock>
             </Border>

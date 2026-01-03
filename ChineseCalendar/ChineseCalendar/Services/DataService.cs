@@ -25,11 +25,22 @@ namespace ChineseCalendar.Services
             this.filePath = Path.Combine(fileDir, fileName);
         }
 
+        public CalendarDatabase GetDatabase()
+        {
+            CalendarDatabase db = ReadFrom(filePath);
+            if (db != null)
+            {
+                return db;
+            }
+            CreateDatabase(CalendarService.calendarType.LunarChinese);
+            return ReadFrom(filePath);
+        }
+
         /// <summary>
         /// Creates a database with the skeleton structure.
         /// </summary>
         /// <param name="type">The calendar type.</param>
-        public void CreateDatabase(CalendarService.calendarType type = CalendarService.calendarType.LunarChinese)
+        private void CreateDatabase(CalendarService.calendarType type = CalendarService.calendarType.LunarChinese)
         {
             if (!File.Exists(filePath))
             {
@@ -114,7 +125,7 @@ namespace ChineseCalendar.Services
         /// <returns>The Calendar event, or null to signify no event found</returns>
         public CalendarEvent SearchEntry(CalendarDatabase database, String targetTitle)
         {
-            if (!File.Exists(this.filePath) || database == null)
+            if(!File.Exists(this.filePath) || database == null)
             {
                 return null;
             }
@@ -122,6 +133,29 @@ namespace ChineseCalendar.Services
             foreach (CalendarEvent calendarEvent in events)
             {
                 if (calendarEvent.Title.Equals(targetTitle))
+                {
+                    return calendarEvent;
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Searches for the specific event entry, designated by the target LunarDate
+        /// </summary>
+        /// <param name="database">The database to search within.</param>
+        /// <param name="targetTitle">The event title to search for.</param>
+        /// <returns>The Calendar event, or null to signify no event found</returns>
+        public CalendarEvent SearchEntry(CalendarDatabase database, LunarDate targetDate)
+        {
+            if (!File.Exists(this.filePath) || database == null)
+            {
+                return null;
+            }
+            List<CalendarEvent> events = database.Events;
+            foreach (CalendarEvent calendarEvent in events)
+            {
+                if (calendarEvent.Date.Equals(targetDate))
                 {
                     return calendarEvent;
                 }
@@ -158,7 +192,6 @@ namespace ChineseCalendar.Services
         /// <summary>
         /// Removes the calendar event from the database.
         /// </summary>
-        /// <param name="database">The database in question.</param>
         /// <param name="eventTitle">The event to remove.</param>
         public void RemoveEntry(String eventTitle)
         {
