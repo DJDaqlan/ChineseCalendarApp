@@ -36,9 +36,12 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Button x:Name="AddEventButton" Grid.Column="1" Margin="8" Content="Add Event" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalAlignment="Top" VerticalContentAlignment="Center" FontWeight="SemiBold" Padding="10" Click="AddEventButton_Click"/>
-            <Button x:Name="RemoveEventButton" Grid.Column="3" Margin="8" Content="Remove Event" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalAlignment="Top" VerticalContentAlignment="Center" FontWeight="SemiBold" Padding="10" Click="RemoveEventButton_Click"/>
+            <Button x:Name="RemoveEventButton" Grid.Column="5" Margin="8" Content="Remove Event" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalAlignment="Top" VerticalContentAlignment="Center" FontWeight="SemiBold" Padding="10" Click="RemoveEventButton_Click"/>
+            <Button x:Name="ViewFilePathButton" Grid.Column="3" Margin="8" Content="View File Path" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalAlignment="Top" VerticalContentAlignment="Center" FontWeight="SemiBold" Padding="10" Click="ViewFilePathButton_Click"/>
         </Grid>
     </Grid>
 </Page>

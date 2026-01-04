@@ -22,7 +22,7 @@ namespace ChineseCalendar.Views
     /// <summary>
     /// Interaction logic for ChineseCalendarWindow.xaml
     /// </summary>
-    public partial class ChineseCalendarWindow : Window, WindowOperable
+    public partial class ChineseCalendarWindow : Window
     {
         const int YEAR_RANGE = 100;
         CalendarService calendar;

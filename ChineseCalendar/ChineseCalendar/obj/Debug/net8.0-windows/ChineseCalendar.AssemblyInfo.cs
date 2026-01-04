@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ChineseCalendar")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3aca734a9ef5daaf34be03def824c477d66b31fb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e4a1ac382d510a2c1a37ed1efd5883344fce11c5")]
 [assembly: System.Reflection.AssemblyProductAttribute("ChineseCalendar")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ChineseCalendar")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

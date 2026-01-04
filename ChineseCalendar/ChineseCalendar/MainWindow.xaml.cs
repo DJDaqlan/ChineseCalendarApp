@@ -21,7 +21,7 @@ namespace ChineseCalendar
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window, WindowOperable
+    public partial class MainWindow : Window
     {
         DataService dataService;
         DateConverterService dateConverter;

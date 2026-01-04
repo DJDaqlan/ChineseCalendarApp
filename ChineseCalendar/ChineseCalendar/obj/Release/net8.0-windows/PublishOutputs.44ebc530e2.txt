@@ -1,0 +1,5 @@
+C:\Users\daqla\OneDrive\Desktop\ChineseCalendarApp\ChineseCalendar\ChineseCalendar\bin\Release\net8.0-windows\publish\ChineseCalendar.exe
+C:\Users\daqla\OneDrive\Desktop\ChineseCalendarApp\ChineseCalendar\ChineseCalendar\bin\Release\net8.0-windows\publish\ChineseCalendar.dll
+C:\Users\daqla\OneDrive\Desktop\ChineseCalendarApp\ChineseCalendar\ChineseCalendar\bin\Release\net8.0-windows\publish\ChineseCalendar.deps.json
+C:\Users\daqla\OneDrive\Desktop\ChineseCalendarApp\ChineseCalendar\ChineseCalendar\bin\Release\net8.0-windows\publish\ChineseCalendar.runtimeconfig.json
+C:\Users\daqla\OneDrive\Desktop\ChineseCalendarApp\ChineseCalendar\ChineseCalendar\bin\Release\net8.0-windows\publish\ChineseCalendar.pdb

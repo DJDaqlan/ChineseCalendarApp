@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36518.9 d17.14
+# Visual Studio Version 18
+VisualStudioVersion = 18.1.11312.151 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChineseCalendar", "ChineseCalendar\ChineseCalendar.csproj", "{E8523007-AA71-4EA7-9133-39AE02B2FE43}"
 EndProject
@@ -11,8 +11,8 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E8523007-AA71-4EA7-9133-39AE02B2FE43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E8523007-AA71-4EA7-9133-39AE02B2FE43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8523007-AA71-4EA7-9133-39AE02B2FE43}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{E8523007-AA71-4EA7-9133-39AE02B2FE43}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{E8523007-AA71-4EA7-9133-39AE02B2FE43}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8523007-AA71-4EA7-9133-39AE02B2FE43}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection

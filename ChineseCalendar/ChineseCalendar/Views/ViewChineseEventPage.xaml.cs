@@ -120,5 +120,10 @@ namespace ChineseCalendar.Views
         {
             hostFrame.Content = null;
         }
+
+        private void ViewFilePathButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Database saved in: " + dataService.GetFilePath());
+        }
     }
 }

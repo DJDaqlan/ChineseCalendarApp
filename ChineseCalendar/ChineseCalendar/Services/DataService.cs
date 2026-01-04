@@ -25,6 +25,11 @@ namespace ChineseCalendar.Services
             this.filePath = Path.Combine(fileDir, fileName);
         }
 
+        public String GetFilePath()
+        {
+            return filePath;
+        }
+
         public CalendarDatabase GetDatabase()
         {
             CalendarDatabase db = ReadFrom(filePath);
