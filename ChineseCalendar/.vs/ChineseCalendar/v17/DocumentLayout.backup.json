@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\daqla\\OneDrive\\Desktop\\ChineseCalendarApp\\ChineseCalendar\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E8523007-AA71-4EA7-9133-39AE02B2FE43}|ChineseCalendar\\ChineseCalendar.csproj|c:\\users\\daqla\\onedrive\\desktop\\chinesecalendarapp\\chinesecalendar\\chinesecalendar\\views\\calendarwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E8523007-AA71-4EA7-9133-39AE02B2FE43}|ChineseCalendar\\ChineseCalendar.csproj|solutionrelative:chinesecalendar\\views\\calendarwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E8523007-AA71-4EA7-9133-39AE02B2FE43}|ChineseCalendar\\ChineseCalendar.csproj|c:\\users\\daqla\\onedrive\\desktop\\chinesecalendarapp\\chinesecalendar\\chinesecalendar\\views\\chinesecalendarwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8523007-AA71-4EA7-9133-39AE02B2FE43}|ChineseCalendar\\ChineseCalendar.csproj|solutionrelative:chinesecalendar\\views\\chinesecalendarwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8523007-AA71-4EA7-9133-39AE02B2FE43}|ChineseCalendar\\ChineseCalendar.csproj|c:\\users\\daqla\\onedrive\\desktop\\chinesecalendarapp\\chinesecalendar\\chinesecalendar\\views\\viewchineseeventpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8523007-AA71-4EA7-9133-39AE02B2FE43}|ChineseCalendar\\ChineseCalendar.csproj|solutionrelative:chinesecalendar\\views\\viewchineseeventpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,23 +18,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CalendarWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\daqla\\OneDrive\\Desktop\\ChineseCalendarApp\\ChineseCalendar\\ChineseCalendar\\Views\\CalendarWindow.xaml.cs",
-              "RelativeDocumentMoniker": "ChineseCalendar\\Views\\CalendarWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\daqla\\OneDrive\\Desktop\\ChineseCalendarApp\\ChineseCalendar\\ChineseCalendar\\Views\\CalendarWindow.xaml.cs",
-              "RelativeToolTip": "ChineseCalendar\\Views\\CalendarWindow.xaml.cs",
-              "ViewState": "AgIAADIAAAAAAAAAAAAkwEoAAABZAAAAAAAAAA==",
+              "Title": "ChineseCalendarWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\daqla\\OneDrive\\Desktop\\ChineseCalendarApp\\ChineseCalendar\\ChineseCalendar\\Views\\ChineseCalendarWindow.xaml.cs",
+              "RelativeDocumentMoniker": "ChineseCalendar\\Views\\ChineseCalendarWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\daqla\\OneDrive\\Desktop\\ChineseCalendarApp\\ChineseCalendar\\ChineseCalendar\\Views\\ChineseCalendarWindow.xaml.cs",
+              "RelativeToolTip": "ChineseCalendar\\Views\\ChineseCalendarWindow.xaml.cs",
+              "ViewState": "AgIAAKMAAAAAAAAAAAAowJoAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-03T13:43:57.47Z",
+              "WhenOpened": "2026-01-04T04:04:48.443Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ViewChineseEventPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\daqla\\OneDrive\\Desktop\\ChineseCalendarApp\\ChineseCalendar\\ChineseCalendar\\Views\\ViewChineseEventPage.xaml.cs",
+              "RelativeDocumentMoniker": "ChineseCalendar\\Views\\ViewChineseEventPage.xaml.cs",
+              "ToolTip": "C:\\Users\\daqla\\OneDrive\\Desktop\\ChineseCalendarApp\\ChineseCalendar\\ChineseCalendar\\Views\\ViewChineseEventPage.xaml.cs",
+              "RelativeToolTip": "ChineseCalendar\\Views\\ViewChineseEventPage.xaml.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAkwEEAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-04T03:38:04.23Z",
               "EditorCaption": ""
             }
           ]

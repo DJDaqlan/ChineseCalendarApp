@@ -17,6 +17,7 @@
         </Grid.RowDefinitions>
         
         <Label x:Name="ViewEventsHeadingLabel" Grid.Row="0" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="0,32,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="24" Content="Calendar Events"/>
+        <Button x:Name="BackButton" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Back" Click="BackButton_Click"/>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>

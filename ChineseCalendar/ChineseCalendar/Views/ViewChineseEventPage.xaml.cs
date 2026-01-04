@@ -115,5 +115,10 @@ namespace ChineseCalendar.Views
             }
             UpdateEvents();
         }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            hostFrame.Content = null;
+        }
     }
 }

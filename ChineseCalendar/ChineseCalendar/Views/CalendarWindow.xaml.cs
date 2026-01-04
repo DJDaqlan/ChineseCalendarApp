@@ -24,10 +24,16 @@ namespace ChineseCalendar.Views
     {
         const int YEAR_RANGE = 100;
         CalendarService calendar;
+        DataService dataService;
+        DateConverterService dateConverter;
+        CalendarDatabase database;
         public CalendarWindow()
         {
             InitializeComponent();
             calendar = new CalendarService(CalendarService.calendarType.Gregorian);
+            dataService = new DataService("CalendarEvents.json", System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "ChineseCalendar"));
+            dateConverter = new DateConverterService();
+            database = dataService.GetDatabase();
             LoadDate(DateTime.Today);
             LoadDateSelectors();
         }
@@ -67,14 +73,14 @@ namespace ChineseCalendar.Views
 
             DaysGrid.RowDefinitions.Clear();
             DaysGrid.ColumnDefinitions.Clear();
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < calendar.WEEKDAY_COUNT; i++)
             {
                 DaysGrid.ColumnDefinitions.Add(new ColumnDefinition());
             }
             int increment = 0;
-            if (calendar.GetFirstDayOfMonth(year, month).Equals(DayOfWeek.Saturday) || calendar.GetFirstDayOfMonth(year, month).Equals(DayOfWeek.Friday)) increment += 1;
-            if (daysNum % 7 != 0) increment += 1;
-            int rows = daysNum / 7 + increment;
+            if (daysNum % calendar.WEEKDAY_COUNT != 0) increment += 1;
+            if (daysNum - (7 - (int)calendar.GetFirstDayOfMonth(year, month)) > calendar.WEEKDAY_COUNT * calendar.MONTH_WEEK_COUNT) increment += 1;
+            int rows = daysNum / calendar.WEEKDAY_COUNT + increment;
             for (int i = 0; i < rows; i++)
             {
                 DaysGrid.RowDefinitions.Add(new RowDefinition());
@@ -97,6 +103,7 @@ namespace ChineseCalendar.Views
                     isShowCurrMonth = true;
                 }
             }
+
             int startingDay = (int)calendar.GetFirstDayOfMonth(year, month);
             int monthDays = calendar.GetNumDays(year, month);
 
@@ -106,10 +113,13 @@ namespace ChineseCalendar.Views
             DaysGrid.Children.Clear();
             for (int d = 1; d <= monthDays; d++)
             {
-                int day = d;
+                LunarDate lunarDate = dateConverter.ToLunar(new DateTime(year, month, d));
+                //MessageBox.Show(lunarDate.Year.ToString() + lunarDate.Month.ToString() + lunarDate.Day.ToString());
+                CalendarEvent dayEvent = dataService.SearchEntry(database, lunarDate);
+
                 var dayLabel = new Label 
                 {
-                    Content = day.ToString(), 
+                    Content = d.ToString(), 
                     HorizontalContentAlignment=HorizontalAlignment.Center, 
                     VerticalContentAlignment=VerticalAlignment.Center, 
                     HorizontalAlignment=HorizontalAlignment.Center, 
@@ -127,12 +137,18 @@ namespace ChineseCalendar.Views
                 {
                     cell.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#DBEAFE"));
                 }
+
+                if (dayEvent != null)
+                {
+                    cell.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#C62828"));
+                }
+
                 Grid.SetRow(cell, row);
                 Grid.SetColumn(cell, col);
                 DaysGrid.Children.Add(cell);
 
                 col += 1;
-                if (col >= 7)
+                if (col >= calendar.WEEKDAY_COUNT)
                 {
                     col = 0;
                     row += 1;
@@ -157,7 +173,7 @@ namespace ChineseCalendar.Views
         private void UpdateMonthSelections(int year)
         {
             MonthComboBox.ItemsSource = Enumerable.Range(1, 12).Select(m => new DateTime(year, m, 1).ToString("MMMM")).ToList();
-            MonthComboBox.SelectedIndex = calendar.GetMonth();
+            MonthComboBox.SelectedIndex = calendar.GetMonth()-1;
         }
 
         /// <summary>
@@ -184,6 +200,7 @@ namespace ChineseCalendar.Views
 
             calendar.ChangeDate(newYear, newMonth);
             LoadDate(new DateTime(calendar.GetYear(), calendar.GetMonth(), calendar.GetDay(), 0, 0, 0));
+            LoadDateSelectors();
         }
 
         private void NextMonthButton_Click(object sender, RoutedEventArgs e)
@@ -198,6 +215,7 @@ namespace ChineseCalendar.Views
 
             calendar.ChangeDate(newYear, newMonth);
             LoadDate(new DateTime(calendar.GetYear(), calendar.GetMonth(), calendar.GetDay(), 0, 0, 0));
+            LoadDateSelectors();
         }
 
         private void CurrMonthButton_Click(object sender, RoutedEventArgs e)
@@ -205,6 +223,7 @@ namespace ChineseCalendar.Views
             DateTime today = DateTime.Today;
             calendar.ChangeDate(today.Year, today.Month);
             LoadDate(today);
+            LoadDateSelectors();
         }
 
         private void SelectDateButton_Click(object sender, RoutedEventArgs e)
@@ -214,6 +233,7 @@ namespace ChineseCalendar.Views
 
             calendar.ChangeDate(desiredYear, desiredMonth);
             LoadDate(new DateTime(calendar.GetYear(), calendar.GetMonth(), calendar.GetDay(), 0, 0, 0));
+            LoadDateSelectors();
         }
 
         private void ChineseCalendarButton_Click(object sender, RoutedEventArgs e)

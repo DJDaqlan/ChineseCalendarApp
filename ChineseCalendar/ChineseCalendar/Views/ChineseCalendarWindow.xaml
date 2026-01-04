@@ -45,6 +45,6 @@
         <Button x:Name="GregorianCalendarButton" Content="View Gregorian Calendar" HorizontalAlignment="Left" Margin="249,486,0,0" VerticalAlignment="Top" Width="142" FontWeight="Bold" Height="32" RenderTransformOrigin="0.5,0.5" Click="GregorianCalendarButton_Click"/>
         <Button x:Name="HomeButton" Content="Home" HorizontalAlignment="Left" Margin="21,17,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="40" Width="40" Click="HomeButton_Click"/>
         <Button x:Name="ViewEventsButton" Content="View Events" HorizontalAlignment="Left" Margin="412,487,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="31" Width="79" Click="ViewEventsButton_Click"/>
-        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" NavigationStopped="MainFrame_NavigationStopped"/>
     </Grid>
 </Window>

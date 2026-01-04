@@ -27,6 +27,7 @@ namespace ChineseCalendar.Views
         const int YEAR_RANGE = 100;
         CalendarService calendar;
         DataService dataService;
+        DateConverterService dateConverter;
         CalendarDatabase database;
         String[] zodiacArray = [
             "Rat", "Ox", "Tiger", "Rabbit", 
@@ -39,6 +40,7 @@ namespace ChineseCalendar.Views
             InitializeComponent();
             calendar = new CalendarService(CalendarService.calendarType.LunarChinese);
             dataService = new DataService("CalendarEvents.json", System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "ChineseCalendar"));
+            dateConverter = new DateConverterService();
             database = dataService.GetDatabase();
             LoadDate(calendar.GetYear(), calendar.GetMonth());
             LoadDateSelectors();
@@ -86,14 +88,14 @@ namespace ChineseCalendar.Views
             int daysNum = calendar.GetNumDays(year, month);
             DaysGrid.RowDefinitions.Clear();
             DaysGrid.ColumnDefinitions.Clear();
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < calendar.WEEKDAY_COUNT; i++)
             {
                 DaysGrid.ColumnDefinitions.Add(new ColumnDefinition());
             }
             int increment = 0;
-            if (calendar.GetFirstDayOfMonth(year, month).Equals(DayOfWeek.Saturday)) increment += 1;
-            if (daysNum % 7 != 0) increment += 1;
-            int rows = daysNum / 7 + increment;
+            if (daysNum % calendar.WEEKDAY_COUNT != 0) increment += 1;
+            if (daysNum - (calendar.WEEKDAY_COUNT - (int)calendar.GetFirstDayOfMonth(year, month)) > calendar.WEEKDAY_COUNT * calendar.MONTH_WEEK_COUNT) increment += 1;
+            int rows = daysNum / calendar.WEEKDAY_COUNT + increment;
             for (int i = 0; i < rows; i++)
             {
                 DaysGrid.RowDefinitions.Add(new RowDefinition());
@@ -108,6 +110,15 @@ namespace ChineseCalendar.Views
         /// <param name="month">The month presented</param>
         private void PopulateDays(int year, int month)
         {
+            bool isShowCurrMonth = false;
+            if (year.Equals(dateConverter.ToLunar(DateTime.Now).Year))
+            {
+                if (month.Equals(dateConverter.ToLunar(DateTime.Now).Month))
+                {
+                    isShowCurrMonth = true;
+                }
+            }
+
             int startingDay = (int)calendar.GetFirstDayOfMonth(year, month);
             int monthDays = calendar.GetNumDays(year, month);
 
@@ -143,37 +154,19 @@ namespace ChineseCalendar.Views
                 };
                 // Checks for events on that specific day
                 CalendarEvent calendarEvent = dataService.SearchEntry(database, date);
-                int c = 0;
-                if (calendarEvent == null)
+
+                bool cnyCheck = month == 1 && d == 1;
+
+                // Format to signify today's date
+                LunarDate todayLunar = dateConverter.ToLunar(DateTime.Today);
+                if (isShowCurrMonth && d == todayLunar.Day)
                 {
-                    // Checks for any daily events
-                    date.Day = 0;
-                    calendarEvent = dataService.SearchEntry(database, date);
-                    if (calendarEvent == null)
-                    {
-                        // Checks for any monthly events
-                        date.Day = d;
-                        date.Month = 0;
-                        calendarEvent = dataService.SearchEntry(database, date);
-                        if (calendarEvent == null)
-                        {
-                            // Checks for any annual events
-                            date.Month = month;
-                            date.Year = 0;
-                            calendarEvent = dataService.SearchEntry(database, date);
-                        }
-                    }
+                    cell.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7C59"));
+                    dayLabel.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFF"));
                 }
                 if (calendarEvent != null)
                 {
                     cell.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#C62828"));
-                }
-
-                // Format to signify today's date
-                if (new ChineseLunisolarCalendar().ToDateTime(year, month, d, 0, 0, 0, 0).Equals(DateTime.Today))
-                {
-                    cell.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4A7C59"));
-                    dayLabel.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFF"));
                 }
 
                 Grid.SetRow(cell, row);
@@ -181,7 +174,7 @@ namespace ChineseCalendar.Views
                 DaysGrid.Children.Add(cell);
 
                 col += 1;
-                if (col >= 7)
+                if (col >= calendar.WEEKDAY_COUNT)
                 {
                     col = 0;
                     row += 1;
@@ -198,7 +191,6 @@ namespace ChineseCalendar.Views
             String[] monthRange = calendar.GetMonthRange(year);
 
             MonthComboBox.ItemsSource = monthRange;
-            //calendar.SetMonth(month);
             MonthComboBox.SelectedIndex = calendar.GetMonth() - 1;
         }
         
@@ -257,13 +249,24 @@ namespace ChineseCalendar.Views
             int desiredMonth = 0;
             desiredMonth = (int)MonthComboBox.SelectedIndex + 1;
 
-            LoadDate(desiredYear, desiredMonth);
-            
+            calendar.SetMonth(desiredMonth);
+            calendar.SetYear(desiredYear);
+
+            LoadDate(calendar.GetYear(), calendar.GetMonth());
+            LoadDateSelectors();
+            LoadZodiac();
         }
 
         private void ViewEventsButton_Click(object sender, RoutedEventArgs e)
         {
             LoadPage(new ViewChineseEventPage(MainFrame));
+        }
+
+        private void MainFrame_NavigationStopped(object sender, System.Windows.Navigation.NavigationEventArgs e)
+        {
+            LoadDate(calendar.GetYear(), calendar.GetMonth());
+            LoadDateSelectors();
+            database = dataService.GetDatabase();
         }
     }
 }

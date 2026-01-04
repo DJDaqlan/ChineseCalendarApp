@@ -225,16 +225,30 @@ namespace ChineseCalendar.Services
             int nextYear = eventDate.Year;
             int nextMonth = eventDate.Month;
             int nextDay = eventDate.Day;
+
             // Having the dates = 0 means that the date format (year, month or day) is repeating
-            if (eventDate.Year == 0 || eventDate.Year == today.Year)
+            if (eventDate.Year == 0)
             {
-                if (eventDate.Month < today.Month)
+                nextYear = today.Year;
+            }
+            if (eventDate.Month == 0)
+            {
+                nextMonth = today.Month;
+            }
+            if (eventDate.Day == 0)
+            {
+                nextDay = today.Day;
+            }
+
+            if (nextYear == today.Year)
+            {
+                if (nextMonth < today.Month)
                 {
                     nextYear = today.Year + 1;
                 }
-                else if (eventDate.Month == 0 || eventDate.Month == today.Month)
+                else if (nextMonth == today.Month)
                 {
-                    if (eventDate.Day < today.Day)
+                    if (nextDay < today.Day)
                     {
                         nextMonth = today.Month + 1;
                     }

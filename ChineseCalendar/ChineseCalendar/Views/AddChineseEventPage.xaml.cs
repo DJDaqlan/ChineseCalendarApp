@@ -89,17 +89,17 @@ namespace ChineseCalendar.Views
                 MessageBox.Show("Please enter a name");
                 return false;
             }
-            if (year == null)
+            if (year == null && !(YearCheckBox.IsChecked==true))
             {
                 MessageBox.Show("Please enter a valid year");
                 return false;
             }
-            if (month == null || month == 0)
+            if (month == null && !(MonthCheckBox.IsChecked==true))
             {
                 MessageBox.Show("Please enter a valid month");
                 return false;
             }
-            if (day == null || day == 0)
+            if (day == null && !(DayCheckBox.IsChecked==true))
             {
                 MessageBox.Show("Please enter a valid day");
                 return false;
@@ -144,14 +144,14 @@ namespace ChineseCalendar.Views
             int year = int.Parse(YearComboBox.SelectedItem.ToString());
             String[] monthRange = calendar.GetMonthRange(year);
             UpdateMonthSelection(monthRange);
-            UpdateDaySelection(calendar.GetDayRange(year, 0));
+            UpdateDaySelection(calendar.GetDayRange(year, 1));
         }
 
         private void MonthComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             int year = int.Parse(YearComboBox.SelectedItem.ToString());
             int month = MonthComboBox.SelectedIndex;
-            String[] days = calendar.GetDayRange(year, month);
+            String[] days = calendar.GetDayRange(year, month+1);
             UpdateDaySelection(days);
         }
 
@@ -168,27 +168,21 @@ namespace ChineseCalendar.Views
         private void MonthCheckBox_Checked(object sender, RoutedEventArgs e)
         {
             MonthComboBox.IsEnabled = false;
-            if (YearComboBox.IsEnabled) YearComboBox.IsEnabled = false;
         }
 
         private void MonthCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             MonthComboBox.IsEnabled = true;
-            if (!(bool)YearCheckBox.IsChecked) YearComboBox.IsEnabled = true;
         }
 
         private void DayCheckBox_Checked(object sender, RoutedEventArgs e)
         {
             DayComboBox.IsEnabled = false;
-            if (MonthComboBox.IsEnabled) MonthComboBox.IsEnabled = false;
-            if (YearComboBox.IsEnabled) YearComboBox.IsEnabled = false;
         }
 
         private void DayCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             DayComboBox.IsEnabled = true;
-            if (!(bool)MonthCheckBox.IsChecked) MonthComboBox.IsEnabled = true;
-            if (!(bool)YearCheckBox.IsChecked) YearComboBox.IsEnabled = true;
         }
 
         private void NameTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -197,6 +191,11 @@ namespace ChineseCalendar.Views
         }
 
         private void SuccessPopup_Closed(object sender, EventArgs e)
+        {
+            hostFrame.Navigate(new ViewChineseEventPage(hostFrame));
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             hostFrame.Navigate(new ViewChineseEventPage(hostFrame));
         }

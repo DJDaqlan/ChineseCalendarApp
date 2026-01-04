@@ -10,7 +10,7 @@
       Background="White">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
@@ -33,6 +33,7 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
+        <Button x:Name="BackButton" Grid.Row="0" Grid.Column="0" Content="Back" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Medium" Click="BackButton_Click"/>
         <Label x:Name="HeadingLabel" Grid.Row="1" Grid.Column="5" Content="Add Event" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <Label x:Name="EventNameLabel" Grid.Row="3" Grid.Column="1" Content="Event Name:" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
         <TextBox x:Name="NameTextBox" Grid.Row="3" Grid.Column="5" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Enter Name here" VerticalAlignment="Center" Width="120"/>

@@ -36,6 +36,12 @@ namespace ChineseCalendar.Services
             return ReadFrom(filePath);
         }
 
+        public List<CalendarEvent> GetEvents()
+        {
+            CalendarDatabase database = GetDatabase();
+            return database.Events;
+        }
+
         /// <summary>
         /// Creates a database with the skeleton structure.
         /// </summary>
@@ -63,7 +69,7 @@ namespace ChineseCalendar.Services
         /// </summary>
         /// <param name="filePath">The file path to save to.</param>
         /// <param name="database">The Calendar Database to save/write.</param>
-        public void WriteTo(String filePath, CalendarDatabase database)
+        private void WriteTo(String filePath, CalendarDatabase database)
         {
             JsonSerializerOptions dbOptions = new JsonSerializerOptions
             {
@@ -78,7 +84,7 @@ namespace ChineseCalendar.Services
         /// </summary>
         /// <param name="filePath">File path to read from.</param>
         /// <returns>The database.</returns>
-        public CalendarDatabase ReadFrom(String filePath)
+        private CalendarDatabase ReadFrom(String filePath)
         {
             if (!File.Exists(filePath))
             {
@@ -141,7 +147,7 @@ namespace ChineseCalendar.Services
         }
 
         /// <summary>
-        /// Searches for the specific event entry, designated by the target LunarDate
+        /// Searches for the specific Lunar event entry, designated by the target LunarDate
         /// </summary>
         /// <param name="database">The database to search within.</param>
         /// <param name="targetTitle">The event title to search for.</param>
@@ -152,12 +158,44 @@ namespace ChineseCalendar.Services
             {
                 return null;
             }
-            List<CalendarEvent> events = database.Events;
-            foreach (CalendarEvent calendarEvent in events)
+
+            LunarDate dailyCheck = new LunarDate
             {
-                if (calendarEvent.Date.Equals(targetDate))
+                Year = targetDate.Year,
+                Month = targetDate.Month,
+                Day = 0
+            };
+            LunarDate monthlyCheck = new LunarDate
+            {
+                Year = targetDate.Year,
+                Month = 0,
+                Day = targetDate.Day
+            };
+            LunarDate yearlyCheck = new LunarDate
+            {
+                Year = 0,
+                Month = targetDate.Month,
+                Day = targetDate.Day
+            };
+
+            List<CalendarEvent> events = database.Events;
+            int[] yearTestValues = {0, targetDate.Year };
+            int[] monthTestValues = { 0, targetDate.Month };
+            int[] dayTestValues = {0, targetDate.Day };
+            foreach (int yearTest in yearTestValues) 
+            {
+                foreach (int monthTest in monthTestValues)
                 {
-                    return calendarEvent;
+                    foreach(int dayTest in dayTestValues)
+                    {
+                        foreach (CalendarEvent calendarEvent in events)
+                        {
+                            if (calendarEvent.Date.Year == yearTest && calendarEvent.Date.Month == monthTest && calendarEvent.Date.Day == dayTest)
+                            {
+                                return calendarEvent;
+                            }
+                        }
+                    }
                 }
             }
             return null;

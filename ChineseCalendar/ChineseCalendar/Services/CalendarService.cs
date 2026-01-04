@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace ChineseCalendar.Services
@@ -17,6 +18,9 @@ namespace ChineseCalendar.Services
             Gregorian,
             LunarChinese
         }
+
+        public int WEEKDAY_COUNT = 7;
+        public int MONTH_WEEK_COUNT = 4;
 
         ChineseLunisolarCalendar chineseCalendar;
         DateConverterService dateConverter;
@@ -306,7 +310,7 @@ namespace ChineseCalendar.Services
             }
             else if (version.Equals(calendarType.LunarChinese))
             {
-                dayNum = chineseCalendar.GetDaysInMonth(year, month+1);
+                dayNum = chineseCalendar.GetDaysInMonth(year, month);
             }
             return dayNum;
         }
@@ -414,5 +418,6 @@ namespace ChineseCalendar.Services
                 gregorianDate = new DateTime(year, month, 1);
             }
         }
+
     }
 }
